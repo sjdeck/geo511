@@ -48,9 +48,39 @@ library(leaflet)
 library(htmltools)
 library(tidyr)
 
-# Import CSV from github data folder
+# Import 911 data CSV from github data folder
 data_911_url <- "https://raw.githubusercontent.com/sjdeck/geo511/refs/heads/master/data/mar2apr2024_latlong.csv"
 data_911 <- read_csv(data_911_url)
+
+# Import zipcode data from API 
+url_json <- "https://data.buffalony.gov/resource/qnyw-efar.geojson"
+zipcode_json <- st_read(url_json, quiet = TRUE)
+
+# Import Census data through API 
+# Set API key
+census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = TRUE)
+readRenviron("~/.Renviron") 
+
+# Download tract data 
+erie_tracts <- tracts(
+  state = "NY",
+  county = "Erie",
+  year = 2023,   # most recent ACS-compatible year
+  cb = TRUE      # "cartographic boundary" = simplified shapes
+)
+
+census_data <- get_acs(
+  geography = "tract",
+  state = "NY",
+  county = "Erie",
+  year = 2023,
+  variables = c(
+    median_income = "B19013_001",   # Median household income
+    total_pop     = "B01003_001"    # Total population
+  ),
+  geometry = TRUE                    # include spatial shapes
+)
+
 ```
 
 Refer to output in your narrative like this: x=`r x` .
