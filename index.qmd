@@ -30,15 +30,15 @@ Necessary steps:
   6. Map most frequent call types by zipcode
   7. Map call volume by zip code
   8. Create and run a regression model on call frequency versus median income. 
-  9. Plot and analyze regression. 
+  9. Plot regression. 
 
 Step 1: 
 Load any required packages:
 
 ```{r, message=F, warning=F}
 
-install.packages(c("tigris", "sf"))
-install.packages("tidycensus", dependencies = TRUE)
+#install.packages(c("tigris", "sf"))
+#install.packages("tidycensus", dependencies = TRUE)
 
 library(dplyr)
 library(readr)
@@ -101,7 +101,73 @@ calls_sf <- st_as_sf(data_911, coords = c("Longitude", "Latitude"), crs = 4326, 
 
 ```
 
-Add any additional processing steps here.
+Step 3:
+
+# Define Mental Health Categories and assign them to the call data
+
+```{r, results='asis'}
+# Categories given by PPG Buffalo 
+
+mental_health_desc <- c("LOUD NOISE", "NEIGHBOR TROUBLE","TRESPASSING","CUSTOMER TROUBLE",
+"DOMESTIC TROUBLE","CHECK WELFARE","UNWELCOME GUEST","DRUNK","NARCOTICS","MISCELLANEOUS",
+"ASSIST CITIZEN","PERSON SOLICITING", "JUVENILE TROUBLE","PROPERTY DISPUTE","MOTORIST STRANDED","LANDLORD TROUBLE","SUICIDE ATTEMPT","PERSON DOWN","PERSON SCREAMING","JUVENILE FOUND","INDECENT EXPOSURE","LABOR DISPUTE","PROSTITUTION","GAMBLING" )
+
+# Create a new dataset with only mental health descriptors
+mental_health_data <- calls_sf %>%
+  filter( DESCRIPTIO %in% mental_health_desc )
+
+# Preview of data
+head(mental_health_data)
+```
+
+Step 4:
+
+# Create a summary table of the call data. 
+
+```{r, results='asis'}
+
+```
+
+Step 5:
+
+# Plot a bar chart summary of call frequency 
+
+```{r, results='asis'}
+
+```
+
+Step 6:
+
+# Map most frequent call types by zipcode 
+
+```{r, results='asis'}
+
+```
+
+Step 7:
+
+# Map call volume by zip code
+
+```{r, results='asis'}
+
+```
+
+Step 8:
+
+# Create and run a regression model on call frequency versus median income
+
+```{r, results='asis'}
+
+```
+
+Step 9:
+
+# Plot Regression
+
+```{r, results='asis'}
+
+```
+
 
 # Results
 
