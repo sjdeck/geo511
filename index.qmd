@@ -308,48 +308,48 @@ ggplot(zip_data, aes(x = median_income, y = Frequency, color = total_pop)) +
 
 Step 10 (optional):
 
-# Spatial regression
+# Spatial regression?
 
 ```{r, results='asis'}
-install.packages("spdep")
-install.packages("spatialreg")
+#install.packages("spdep")
+#install.packages("spatialreg")
 
-library(spdep)
-library(spatialreg)
+#library(spdep)
+#library(spatialreg)
 
 # Create neighbors list (based on shared boundaries)
-nb <- poly2nb(zip_data)
+#nb <- poly2nb(zip_data)
 
 # Convert to spatial weights list
-lw <- nb2listw(nb, style = "W")  # row-standardized weights
+#lw <- nb2listw(nb, style = "W")  # row-standardized weights
 
-ols_model <- lm(Frequency ~ median_income, data = zip_data)
+#ols_model <- lm(Frequency ~ median_income, data = zip_data)
 
-moran.test(residuals(ols_model), lw)
+#moran.test(residuals(ols_model), lw)
 
-lag_model <- lagsarlm(Frequency ~ median_income, data = zip_data, listw = lw)
+#lag_model <- lagsarlm(Frequency ~ median_income, data = zip_data, listw = lw)
 
-zip_data$residuals <- residuals(lag_model)
+#zip_data$residuals <- residuals(lag_model)
 
 #install.packages("tmap")
-library(tmap)
-tmap_mode("view")
+#library(tmap)
+#tmap_mode("view")
 
-tm_shape(zip_data) +
-  tm_polygons("residuals", palette = "RdBu", midpoint = 0) +
-  tm_layout(title = "Spatial Lag Model Residuals (Call_Count ~ Median_Income)")
+#tm_shape(zip_data) +
+#  tm_polygons("residuals", palette = "RdBu", midpoint = 0) +
+#  tm_layout(title = "Spatial Lag Model Residuals (Call_Count ~ Median_Income)")
 
 # Red under predicts(more calls than expected) - blue over predicts (fewer calls than expected)
-tm_shape(zip_data) +
-  tm_polygons(
-    "residuals",
-    palette = "-RdBu",
-    midpoint = 0,
-    title = "Model Residuals"
-  ) +
-  tm_layout(
-    title = "Spatial Lag Model Residuals (Call_Count ~ Population + Income)"
-  )
+#tm_shape(zip_data) +
+#  tm_polygons(
+#    "residuals",
+#    palette = "-RdBu",
+#    midpoint = 0,
+#    title = "Model Residuals"
+#  ) +
+#  tm_layout(
+#    title = "Spatial Lag Model Residuals (Call_Count ~ Population + Income)"
+#  )
 ```
 
 # Results
