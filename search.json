@@ -9,16 +9,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "My Final Project Template",
+    "title": "Emergency Services Call Analysis in Buffalo, New York",
     "section": "",
-    "text": "[~ 200 words]\ntesting commit"
+    "text": "[ Emergency services are essential in times of crisis’s, providing necessary response teams to areas in need with support from Police, Fire, and Medical professionals. Unfortunately high call volumes and low staffing can result in misguided directives and improper handling of sensitive situations. This report will provide further insight on call classification and distribution of mental health related calls within the City of Buffalo, including any potential correlation between median household income. The results of this analysis will assist in understanding the use of Buffalo’s resources and how socio-economic factors can be indicitive of … ]"
   },
   {
     "objectID": "index.html#download-and-clean-all-required-data",
     "href": "index.html#download-and-clean-all-required-data",
-    "title": "My Final Project Template",
+    "title": "Emergency Services Call Analysis in Buffalo, New York",
     "section": "Download and clean all required data",
-    "text": "Download and clean all required data\n\nn=20\ndata=data.frame(x=runif(n,-180,180),\n                y=runif(n,-60,60),\n                size = runif(n, 5, 20),\n                category = factor(\n                  sample(letters[1:5], n, replace = TRUE)\n                  ),\n                value = rnorm(n))\n\ndata %&gt;% \n  slice(1:10) %&gt;% #show only 1:n rows\n  kable(digits=2,align=\"c\")%&gt;% #make table and round to two digits\n  kable_styling(bootstrap_options = \n                  c(\"striped\", \"hover\", \"condensed\", \"responsive\")) #apply other formatting\n\n\n\n\nx\ny\nsize\ncategory\nvalue\n\n\n\n\n-98.91\n21.32\n16.48\nb\n0.74\n\n\n-87.87\n33.61\n9.95\ne\n0.81\n\n\n-135.48\n-28.93\n15.83\na\n1.64\n\n\n-52.67\n-12.22\n14.85\na\n0.66\n\n\n-156.32\n-40.22\n5.67\nc\n-1.29\n\n\n156.92\n58.12\n15.61\na\n0.41\n\n\n-48.86\n-30.23\n10.90\nc\n0.94\n\n\n174.38\n12.55\n14.74\nc\n-0.14\n\n\n-0.60\n-16.70\n6.68\na\n2.09\n\n\n57.25\n-54.02\n17.94\nb\n1.56\n\n\n\n\nAdd any additional processing steps here."
+    "text": "Download and clean all required data\n\nn=20\ndata=data.frame(x=runif(n,-180,180),\n                y=runif(n,-60,60),\n                size = runif(n, 5, 20),\n                category = factor(\n                  sample(letters[1:5], n, replace = TRUE)\n                  ),\n                value = rnorm(n))\n\ndata %&gt;% \n  slice(1:10) %&gt;% #show only 1:n rows\n  kable(digits=2,align=\"c\")%&gt;% #make table and round to two digits\n  kable_styling(bootstrap_options = \n                  c(\"striped\", \"hover\", \"condensed\", \"responsive\")) #apply other formatting\n\n\n\n\nx\ny\nsize\ncategory\nvalue\n\n\n\n\n-101.69\n53.44\n9.91\ne\n1.40\n\n\n-170.37\n-24.36\n7.39\nd\n-0.20\n\n\n10.81\n5.08\n11.56\na\n-0.84\n\n\n-51.86\n31.55\n17.40\nd\n-0.67\n\n\n-119.27\n3.20\n18.33\ne\n0.38\n\n\n-165.93\n33.65\n7.89\nb\n-0.15\n\n\n-18.07\n-50.01\n8.19\nd\n-0.28\n\n\n168.28\n-28.69\n9.08\ne\n0.90\n\n\n150.43\n-14.13\n18.88\nb\n-0.75\n\n\n157.07\n-22.71\n14.08\nb\n-0.98\n\n\n\n\nAdd any additional processing steps here."
   },
   {
     "objectID": "about.html",
