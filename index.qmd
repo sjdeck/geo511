@@ -114,10 +114,18 @@ mental_health_desc <- c("LOUD NOISE", "NEIGHBOR TROUBLE","TRESPASSING","CUSTOMER
 
 # Create a new dataset with only mental health descriptors
 mental_health_data <- calls_sf %>%
-  filter( DESCRIPTIO %in% mental_health_desc )
+  filter( DESCRIPTIO %in% mental_health_desc ) %>%
+  rename(
+    description = DESCRIPTIO,
+    date = DATEREPORT,
+    full_address = Buff_remov,
+    street_name = STRNAME
+  )
 
 # Preview of data
 head(mental_health_data)
+
+
 ```
 
 Step 4:
@@ -125,7 +133,10 @@ Step 4:
 # Create a summary table of the call data. 
 
 ```{r, results='asis'}
-
+# Count each unique number and order by frequency
+summary_table <- mental_health_data %>%
+  count(description, sort = FALSE) %>%   # counts and sorts descending by n
+  rename(Frequency = n)
 ```
 
 Step 5:
