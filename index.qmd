@@ -65,27 +65,19 @@ zipcode_json <- st_read(url_json, quiet = TRUE)
 
 # Import Census data through API 
 # Set API key
-census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = TRUE, overwrite = TRUE)
+census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = FALSE)
 readRenviron("~/.Renviron") 
 
-# Download tract data 
-erie_tracts <- tracts(
-  state = "NY",
-  county = "Erie",
-  year = 2023,   # most recent ACS-compatible year
-  cb = TRUE      # "cartographic boundary" = simplified shapes
-)
 
+# Download census data
 census_data <- get_acs(
-  geography = "tract",
-  state = "NY",
-  county = "Erie",
+  geography = "zcta",                       # use "zcta" or "zip code tabulation area"
+ variables = c(
+    median_income = "B19013_001",  
+    total_pop     = "B01003_001"),          
   year = 2023,
-  variables = c(
-    median_income = "B19013_001",   # Median household income
-    total_pop     = "B01003_001"    # Total population
-  ),
-  geometry = TRUE                    # include spatial shapes
+  survey = "acs5",
+  geometry = FALSE
 )
 
 ```
@@ -103,6 +95,13 @@ zipcode_json <- st_transform(zipcode_json, st_crs(calls_sf))
 
 # Join call data and zipcode data together 
 calls_sf <- st_intersection(calls_sf, zipcode_json %>% select(zcta5ce10))
+
+# Clean census data, change CRS and pivot
+census_clean <- census_data %>%
+  select(GEOID, variable, estimate, GEOID) %>%
+  pivot_wider(names_from = variable, values_from = estimate)
+
+
 ```
 
 Step 3:
@@ -194,7 +193,8 @@ top_calls <- mental_health_data %>%
 
 # Join back for geometry zip data 
 top_calls_zip <- zipcode_json %>%
-  left_join(top_calls, by = c("zcta5ce10" = "zipcode"))
+  left_join(top_calls, by = c("zcta5ce10" = "zipcode")) %>%
+  select(zcta5ce10, n, description)
 
 ggplot() +
   geom_sf(data = top_calls_zip, aes(fill = description), color = "black") +
@@ -215,7 +215,8 @@ Step 7:
 # Frequency call 
 freq_calls_zip <- summary_table_zip %>%
   st_drop_geometry() %>%
-  group_by(zipcode)
+  group_by(zipcode)%>%
+  select(zipcode, Frequency)
 
 # Join zip data and geometry
 freq_calls_zip <- zipcode_json %>%
@@ -249,6 +250,28 @@ Step 8:
 
 ```{r, results='asis'}
 
+# Drop geometry on zip summary data
+zip_frequency <- summary_table_zip %>%
+  st_drop_geometry() %>%
+  group_by(zipcode)
+
+# Drop geometry on census data
+census_drop <- census_clean %>%
+  st_drop_geometry()
+
+# Merge with census data
+zip_data <- zipcode_json %>%
+  left_join(zip_frequency, by = c("zcta5ce10" = "zipcode")) %>%
+  left_join(census_drop, by = c("geoid10" = "GEOID")) %>%
+  mutate(Frequency = replace_na(Frequency, 0))
+  
+# Run simple regression model
+model <- lm(Frequency ~ median_income, data = zip_data)
+summary(model)
+
+# Run simple regression model + total_pop
+model2 <- lm(Frequency ~ median_income + total_pop, data = zip_data)
+summary(model2)
 ```
 
 Step 9:
@@ -257,8 +280,77 @@ Step 9:
 
 ```{r, results='asis'}
 
+# Visualize
+ggplot(zip_data, aes(x = median_income, y = Frequency)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(
+    title = "Relationship Between 911 Call Volume and Median Household Income",
+    x = "Median Household Income ($)",
+    y = "Total 911 Calls"
+  ) +
+  theme_minimal()
+
+# Visualize
+ggplot(zip_data, aes(x = median_income, y = Frequency, color = total_pop)) +
+  geom_point(size = 3, alpha = 0.8) +
+  scale_color_viridis_c(option = "C") +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    title = "911 Calls vs Median Income (colored by Population)",
+    x = "Median Household Income ($)",
+    y = "Total 911 Calls",
+    color = "Total Population"
+  ) +
+  theme_minimal()
+
 ```
 
+Step 10 (optional):
+
+# Spatial regression
+
+```{r, results='asis'}
+install.packages("spdep")
+install.packages("spatialreg")
+
+library(spdep)
+library(spatialreg)
+
+# Create neighbors list (based on shared boundaries)
+nb <- poly2nb(zip_data)
+
+# Convert to spatial weights list
+lw <- nb2listw(nb, style = "W")  # row-standardized weights
+
+ols_model <- lm(Frequency ~ median_income, data = zip_data)
+
+moran.test(residuals(ols_model), lw)
+
+lag_model <- lagsarlm(Frequency ~ median_income, data = zip_data, listw = lw)
+
+zip_data$residuals <- residuals(lag_model)
+
+#install.packages("tmap")
+library(tmap)
+tmap_mode("view")
+
+tm_shape(zip_data) +
+  tm_polygons("residuals", palette = "RdBu", midpoint = 0) +
+  tm_layout(title = "Spatial Lag Model Residuals (Call_Count ~ Median_Income)")
+
+# Red under predicts(more calls than expected) - blue over predicts (fewer calls than expected)
+tm_shape(zip_data) +
+  tm_polygons(
+    "residuals",
+    palette = "-RdBu",
+    midpoint = 0,
+    title = "Model Residuals"
+  ) +
+  tm_layout(
+    title = "Spatial Lag Model Residuals (Call_Count ~ Population + Income)"
+  )
+```
 
 # Results
 
