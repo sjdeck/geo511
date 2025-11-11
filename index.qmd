@@ -91,14 +91,18 @@ census_data <- get_acs(
 ```
 
 Step 2: 
-# Clean & Convert 911 data 
+# Clean & Convert data 
 
 ```{r, results='asis'}
 
 # Convert to an sf object to "enable standard spatial data handling, analysis, and visualization"
 calls_sf <- st_as_sf(data_911, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE)
 
+#Transform zipcode data to match 911 data
+zipcode_json <- st_transform(zipcode_json, st_crs(calls_sf))
 
+# Join call data and zipcode data together 
+calls_sf <- st_intersection(calls_sf, zipcode_json %>% select(zcta5ce10))
 ```
 
 Step 3:
@@ -119,7 +123,8 @@ mental_health_data <- calls_sf %>%
     description = DESCRIPTIO,
     date = DATEREPORT,
     full_address = Buff_remov,
-    street_name = STRNAME
+    street_name = STRNAME,
+    zipcode = zcta5ce10
   )
 
 # Preview of data
@@ -133,18 +138,44 @@ Step 4:
 # Create a summary table of the call data. 
 
 ```{r, results='asis'}
-# Count each unique number and order by frequency
-summary_table <- mental_health_data %>%
+
+# Count each description and order by frequency
+summary_table_desc <- mental_health_data %>%
   count(description, sort = FALSE) %>%   # counts and sorts descending by n
+  rename(Frequency = n)
+
+# Count each zipcode and order by frequency
+summary_table_zip <- mental_health_data %>%
+  count(zipcode, sort = TRUE) %>%   # count how many times each ZIP appears
   rename(Frequency = n)
 ```
 
 Step 5:
 
-# Plot a bar chart summary of call frequency 
+# Plot a bar chart summary of call & zipcode frequency 
 
 ```{r, results='asis'}
+# ggplot of the call frequency and description
+ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
+  geom_bar(stat = "identity", fill = "steelblue") + 
+  labs(
+    title = "Frequency of Mental Health Calls in Buffalo, New York",
+    caption = "March to April of 2024",
+    x = "Call Description",
+    y = "Frequency"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
+# ggplot of the zipcode frequency and description
+ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
+  geom_bar(stat = "identity", fill = "lightgreen") + 
+  labs(
+    title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York",
+    caption = "March to April of 2024",
+    x = "Zipcode",
+    y = "Frequency"
+  ) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
 
 Step 6:
@@ -152,6 +183,26 @@ Step 6:
 # Map most frequent call types by zipcode 
 
 ```{r, results='asis'}
+
+# Top call and description 
+top_calls <- mental_health_data %>%
+  st_drop_geometry() %>%
+  group_by(zipcode, description) %>%
+  summarise(n = n(), .groups = "drop_last") %>%
+  slice_max(order_by = n, n = 1, with_ties = FALSE)
+
+# Join back for geometry zip data 
+top_calls_zip <- zipcode_json %>%
+  left_join(top_calls, by = c("zcta5ce10" = "zipcode"))
+
+ggplot() +
+  geom_sf(data = top_calls_zip, aes(fill = description), color = "black") +
+  scale_fill_viridis_d(option = "C") +
+  labs(
+    title = "Most Frequent Mental Health 911 Calls by ZIP Code (Mar–Apr 2024)",
+    caption = "City of Buffalo | Data: Erie County 911"
+  ) +
+  theme_minimal()
 
 ```
 
