@@ -232,7 +232,7 @@ leaflet(freq_calls_zip) %>%
     color = "black",
     weight = 1,
     fillOpacity = 0.8,
-    label = ~paste("ZIP:", zcta5ce10, "<br>Freq:", Frequency),
+    label = ~paste("ZIP:", zcta5ce10, "Freq:", Frequency),
     highlight = highlightOptions(weight = 2, color = "white", bringToFront = TRUE)
   ) %>%
   addLegend(
