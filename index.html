@@ -252,10 +252,6 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |=                                                                     |   2%
-  |                                                                            
-  |==                                                                    |   2%
-  |                                                                            
   |==                                                                    |   3%
   |                                                                            
   |===                                                                   |   4%
@@ -322,35 +318,31 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |===================                                                   |  27%
   |                                                                            
-  |====================                                                  |  28%
-  |                                                                            
   |====================                                                  |  29%
   |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |======================                                                |  31%
+  |=====================                                                 |  31%
   |                                                                            
   |=======================                                               |  32%
   |                                                                            
-  |=======================                                               |  33%
+  |========================                                              |  34%
   |                                                                            
-  |========================                                              |  35%
+  |=========================                                             |  36%
   |                                                                            
-  |==========================                                            |  36%
-  |                                                                            
-  |===========================                                           |  38%
+  |==========================                                            |  37%
   |                                                                            
   |===========================                                           |  39%
   |                                                                            
-  |============================                                          |  41%
+  |============================                                          |  40%
   |                                                                            
-  |==============================                                        |  42%
+  |=============================                                         |  42%
   |                                                                            
-  |===============================                                       |  44%
+  |==============================                                        |  43%
   |                                                                            
-  |================================                                      |  46%
+  |===============================                                       |  45%
   |                                                                            
   |=================================                                     |  47%
+  |                                                                            
+  |=================================                                     |  48%
   |                                                                            
   |==================================                                    |  49%
   |                                                                            
@@ -360,7 +352,9 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |======================================                                |  54%
   |                                                                            
-  |========================================                              |  57%
+  |=======================================                               |  55%
+  |                                                                            
+  |========================================                              |  58%
   |                                                                            
   |=========================================                             |  59%
   |                                                                            
@@ -370,27 +364,27 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |=============================================                         |  64%
   |                                                                            
-  |==============================================                        |  65%
-  |                                                                            
   |===============================================                       |  67%
   |                                                                            
-  |================================================                      |  69%
-  |                                                                            
-  |=================================================                     |  70%
+  |================================================                      |  68%
   |                                                                            
   |==================================================                    |  72%
   |                                                                            
+  |===================================================                   |  73%
+  |                                                                            
   |====================================================                  |  75%
   |                                                                            
-  |=======================================================               |  78%
+  |======================================================                |  77%
   |                                                                            
-  |========================================================              |  81%
+  |========================================================              |  80%
+  |                                                                            
+  |=========================================================             |  81%
   |                                                                            
   |==========================================================            |  83%
   |                                                                            
   |===========================================================           |  84%
   |                                                                            
-  |=============================================================         |  87%
+  |============================================================          |  86%
   |                                                                            
   |==============================================================        |  88%
   |                                                                            
@@ -398,9 +392,9 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |=================================================================     |  93%
   |                                                                            
-  |====================================================================  |  97%
+  |==================================================================    |  94%
   |                                                                            
-  |====================================================================  |  98%
+  |====================================================================  |  97%
   |                                                                            
   |======================================================================| 100%</code></pre>
 </div>
@@ -436,17 +430,32 @@ Downloading feature geometry from the Census website.  To cache shapefiles for u
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset with only mental health descriptors</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>mental_health_data <span class="ot">&lt;-</span> calls_sf <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( DESCRIPTIO <span class="sc">%in%</span> mental_health_desc )</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview of data</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mental_health_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Simple feature collection with 6 features and 12 fields Geometry type: POINT Dimension: XY Bounding box: xmin: -97.55018 ymin: 42.85067 xmax: -78.81816 ymax: 46.91719 Geodetic CRS: WGS 84 # A tibble: 6 × 13 DATEREPORT ADDRESS DISPATCHDI DISPATCHSE DISPATCHCO DESCRIPTIO STRNAME <chr> <chr> <chr> <chr> <chr> <chr> <chr><br>
-1 4/23/2024 0:00:00 124 PRI… BUFA BUF4 NEIGH NEIGHBOR … PRIES<br>
-2 4/23/2024 0:00:00 368 BRO… BUFB BUF3 ASSIST ASSIST CI… BROADW… 3 4/23/2024 0:00:00 170 HER… BUFD BUF1 PROP PROPERTY … HERTEL 4 4/8/2024 0:00:00 462 GRI… BUFE BUF4 NARC NARCOTICS GRIDER 5 4/14/2024 0:00:00 220 MIN… BUFE BUF1 LANDTR LANDLORD … MINNES… 6 4/14/2024 0:00:00 161 HEW… BUFE BUF1 DOM DOMESTIC … HEWITT # ℹ 6 more variables: DISPOSITIO <chr>, Buff_remov <chr>, City <chr>, # Latitude <dbl>, Longitude <dbl>, geometry &lt;POINT [°]&gt;</dbl></dbl></chr></chr></chr></chr></chr></chr></chr></chr></chr></chr></p>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( DESCRIPTIO <span class="sc">%in%</span> mental_health_desc ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> DESCRIPTIO,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> DATEREPORT,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_address =</span> Buff_remov,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">street_name =</span> STRNAME</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview of data</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mental_health_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Simple feature collection with 6 features and 12 fields Geometry type: POINT Dimension: XY Bounding box: xmin: -97.55018 ymin: 42.85067 xmax: -78.81816 ymax: 46.91719 Geodetic CRS: WGS 84 # A tibble: 6 × 13 date ADDRESS DISPATCHDI DISPATCHSE DISPATCHCO description street_name <chr> <chr> <chr> <chr> <chr> <chr> <chr><br>
+1 4/23/2024 0:… 124 PR… BUFA BUF4 NEIGH NEIGHBOR T… PRIES<br>
+2 4/23/2024 0:… 368 BR… BUFB BUF3 ASSIST ASSIST CIT… BROADWAY<br>
+3 4/23/2024 0:… 170 HE… BUFD BUF1 PROP PROPERTY D… HERTEL<br>
+4 4/8/2024 0:0… 462 GR… BUFE BUF4 NARC NARCOTICS GRIDER<br>
+5 4/14/2024 0:… 220 MI… BUFE BUF1 LANDTR LANDLORD T… MINNESOTA<br>
+6 4/14/2024 0:… 161 HE… BUFE BUF1 DOM DOMESTIC T… HEWITT<br>
+# ℹ 6 more variables: DISPOSITIO <chr>, full_address <chr>, City <chr>, # Latitude <dbl>, Longitude <dbl>, geometry &lt;POINT [°]&gt;</dbl></dbl></chr></chr></chr></chr></chr></chr></chr></chr></chr></chr></p>
 <p>Step 4:</p>
 </section>
 <section id="create-a-summary-table-of-the-call-data." class="level1">
 <h1>Create a summary table of the call data.</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each unique number and order by frequency</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> mental_health_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(description, <span class="at">sort =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span>   <span class="co"># counts and sorts descending by n</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Frequency =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Step 5:</p>
 </section>
 <section id="plot-a-bar-chart-summary-of-call-frequency" class="level1">
