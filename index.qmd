@@ -1,22 +1,20 @@
 ---
-title: "My Final Project Template"
-author: Your name here
-subtitle: Subtitle here if desired
+title: "Emergency Services Call Analysis in Buffalo, New York"
+author: Sydney Deck
+subtitle: Exploring the Correlation Between Mental Health–Related Emergency Calls and Median Household Income.
 date: today
 date-format: long
 ---
 
 # Introduction
 
-\[\~ 200 words\]
-
-testing commit
+\[\ Emergency services are essential in times of crisis's, providing necessary response teams to areas in need with support from Police, Fire, and Medical professionals. Unfortunately high call volumes and low staffing can result in misguided directives and improper handling of sensitive situations. This report will provide further insight on call classification and distribution of mental health related calls within the City of Buffalo, including any potential correlation between median household income. The results of this analysis will assist in understanding the use of Buffalo's resources and how socio-economic factors can be indicitive of ...    \]
 
 # Materials and methods
 
 \[\~ 200 words\]
 
-Narrative: Clear narrative description of the data sources and methods. Includes data from at least two sources that were integrated / merged in R.
+Overview: Import, clean and categorize data for use in
 
 Code: The code associated with the project is well organized and easy to follow. Demonstrates mastery of R graphics and functions.
 
