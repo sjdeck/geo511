@@ -331,8 +331,6 @@ Step 10 (optional):
 
 #zip_data$residuals <- residuals(lag_model)
 
-install.packages("tmap")
-library(tmap)
 #tmap_mode("view")
 
 #tm_shape(zip_data) +
