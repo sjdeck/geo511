@@ -254,29 +254,17 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |==                                                                    |   3%
   |                                                                            
-  |===                                                                   |   4%
-  |                                                                            
   |===                                                                   |   5%
   |                                                                            
-  |====                                                                  |   5%
-  |                                                                            
   |====                                                                  |   6%
-  |                                                                            
-  |=====                                                                 |   6%
   |                                                                            
   |=====                                                                 |   7%
   |                                                                            
   |=====                                                                 |   8%
   |                                                                            
-  |======                                                                |   8%
-  |                                                                            
   |======                                                                |   9%
   |                                                                            
-  |=======                                                               |   9%
-  |                                                                            
   |=======                                                               |  10%
-  |                                                                            
-  |=======                                                               |  11%
   |                                                                            
   |========                                                              |  11%
   |                                                                            
@@ -296,105 +284,61 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
   |                                                                            
   |============                                                          |  18%
   |                                                                            
-  |=============                                                         |  19%
-  |                                                                            
   |==============                                                        |  19%
   |                                                                            
   |==============                                                        |  20%
   |                                                                            
-  |===============                                                       |  21%
-  |                                                                            
-  |===============                                                       |  22%
-  |                                                                            
   |================                                                      |  23%
-  |                                                                            
-  |=================                                                     |  24%
   |                                                                            
   |=================                                                     |  25%
   |                                                                            
-  |==================                                                    |  25%
-  |                                                                            
   |==================                                                    |  26%
   |                                                                            
-  |===================                                                   |  27%
+  |====================                                                  |  28%
   |                                                                            
   |====================                                                  |  29%
   |                                                                            
-  |=====================                                                 |  31%
+  |=====================                                                 |  30%
   |                                                                            
-  |=======================                                               |  32%
+  |======================                                                |  31%
+  |                                                                            
+  |=======================                                               |  33%
   |                                                                            
   |========================                                              |  34%
   |                                                                            
-  |=========================                                             |  36%
+  |==========================                                            |  36%
   |                                                                            
   |==========================                                            |  37%
   |                                                                            
   |===========================                                           |  39%
   |                                                                            
-  |============================                                          |  40%
-  |                                                                            
   |=============================                                         |  42%
   |                                                                            
-  |==============================                                        |  43%
+  |===============================                                       |  44%
   |                                                                            
   |===============================                                       |  45%
   |                                                                            
   |=================================                                     |  47%
   |                                                                            
-  |=================================                                     |  48%
-  |                                                                            
-  |==================================                                    |  49%
+  |==================================                                    |  48%
   |                                                                            
   |====================================                                  |  51%
   |                                                                            
   |=====================================                                 |  53%
   |                                                                            
-  |======================================                                |  54%
+  |=======================================                               |  56%
   |                                                                            
-  |=======================================                               |  55%
-  |                                                                            
-  |========================================                              |  58%
-  |                                                                            
-  |=========================================                             |  59%
-  |                                                                            
-  |===========================================                           |  61%
-  |                                                                            
-  |============================================                          |  63%
+  |==========================================                            |  59%
   |                                                                            
   |=============================================                         |  64%
   |                                                                            
-  |===============================================                       |  67%
-  |                                                                            
-  |================================================                      |  68%
-  |                                                                            
-  |==================================================                    |  72%
+  |===============================================                       |  68%
   |                                                                            
   |===================================================                   |  73%
   |                                                                            
-  |====================================================                  |  75%
+  |=======================================================               |  79%
   |                                                                            
-  |======================================================                |  77%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |=========================================================             |  81%
-  |                                                                            
-  |==========================================================            |  83%
-  |                                                                            
-  |===========================================================           |  84%
-  |                                                                            
-  |============================================================          |  86%
-  |                                                                            
-  |==============================================================        |  88%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |=================================================================     |  93%
-  |                                                                            
-  |==================================================================    |  94%
-  |                                                                            
-  |====================================================================  |  97%
+  |=============================================================         |  87%
   |                                                                            
   |======================================================================| 100%</code></pre>
 </div>
@@ -414,56 +358,112 @@ To use now, restart R or run `readRenviron("~/.Renviron")`</code></pre>
 Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.</code></pre>
 </div>
 </div>
-<p>Step 2: # Clean &amp; Convert 911 data</p>
+<p>Step 2: # Clean &amp; Convert data</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to an sf object to "enable standard spatial data handling, analysis, and visualization"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>calls_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(data_911, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>, <span class="st">"Latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>calls_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(data_911, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"Longitude"</span>, <span class="st">"Latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Transform zipcode data to match 911 data</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>zipcode_json <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(zipcode_json, <span class="fu">st_crs</span>(calls_sf))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Join call data and zipcode data together </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>calls_sf <span class="ot">&lt;-</span> <span class="fu">st_intersection</span>(calls_sf, zipcode_json <span class="sc">%&gt;%</span> <span class="fu">select</span>(zcta5ce10))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>Warning: attribute variables are assumed to be spatially constant throughout
+all geometries</code></pre>
 <p>Step 3:</p>
 </section>
 </section>
 <section id="define-mental-health-categories-and-assign-them-to-the-call-data" class="level1">
 <h1>Define Mental Health Categories and assign them to the call data</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categories given by PPG Buffalo </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mental_health_desc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"LOUD NOISE"</span>, <span class="st">"NEIGHBOR TROUBLE"</span>,<span class="st">"TRESPASSING"</span>,<span class="st">"CUSTOMER TROUBLE"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">"DOMESTIC TROUBLE"</span>,<span class="st">"CHECK WELFARE"</span>,<span class="st">"UNWELCOME GUEST"</span>,<span class="st">"DRUNK"</span>,<span class="st">"NARCOTICS"</span>,<span class="st">"MISCELLANEOUS"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">"ASSIST CITIZEN"</span>,<span class="st">"PERSON SOLICITING"</span>, <span class="st">"JUVENILE TROUBLE"</span>,<span class="st">"PROPERTY DISPUTE"</span>,<span class="st">"MOTORIST STRANDED"</span>,<span class="st">"LANDLORD TROUBLE"</span>,<span class="st">"SUICIDE ATTEMPT"</span>,<span class="st">"PERSON DOWN"</span>,<span class="st">"PERSON SCREAMING"</span>,<span class="st">"JUVENILE FOUND"</span>,<span class="st">"INDECENT EXPOSURE"</span>,<span class="st">"LABOR DISPUTE"</span>,<span class="st">"PROSTITUTION"</span>,<span class="st">"GAMBLING"</span> )</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset with only mental health descriptors</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>mental_health_data <span class="ot">&lt;-</span> calls_sf <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( DESCRIPTIO <span class="sc">%in%</span> mental_health_desc ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> DESCRIPTIO,</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> DATEREPORT,</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_address =</span> Buff_remov,</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">street_name =</span> STRNAME</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview of data</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mental_health_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Simple feature collection with 6 features and 12 fields Geometry type: POINT Dimension: XY Bounding box: xmin: -97.55018 ymin: 42.85067 xmax: -78.81816 ymax: 46.91719 Geodetic CRS: WGS 84 # A tibble: 6 × 13 date ADDRESS DISPATCHDI DISPATCHSE DISPATCHCO description street_name <chr> <chr> <chr> <chr> <chr> <chr> <chr><br>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categories given by PPG Buffalo </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mental_health_desc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"LOUD NOISE"</span>, <span class="st">"NEIGHBOR TROUBLE"</span>,<span class="st">"TRESPASSING"</span>,<span class="st">"CUSTOMER TROUBLE"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">"DOMESTIC TROUBLE"</span>,<span class="st">"CHECK WELFARE"</span>,<span class="st">"UNWELCOME GUEST"</span>,<span class="st">"DRUNK"</span>,<span class="st">"NARCOTICS"</span>,<span class="st">"MISCELLANEOUS"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">"ASSIST CITIZEN"</span>,<span class="st">"PERSON SOLICITING"</span>, <span class="st">"JUVENILE TROUBLE"</span>,<span class="st">"PROPERTY DISPUTE"</span>,<span class="st">"MOTORIST STRANDED"</span>,<span class="st">"LANDLORD TROUBLE"</span>,<span class="st">"SUICIDE ATTEMPT"</span>,<span class="st">"PERSON DOWN"</span>,<span class="st">"PERSON SCREAMING"</span>,<span class="st">"JUVENILE FOUND"</span>,<span class="st">"INDECENT EXPOSURE"</span>,<span class="st">"LABOR DISPUTE"</span>,<span class="st">"PROSTITUTION"</span>,<span class="st">"GAMBLING"</span> )</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset with only mental health descriptors</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>mental_health_data <span class="ot">&lt;-</span> calls_sf <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( DESCRIPTIO <span class="sc">%in%</span> mental_health_desc ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> DESCRIPTIO,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> DATEREPORT,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_address =</span> Buff_remov,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">street_name =</span> STRNAME,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">zipcode =</span> zcta5ce10</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview of data</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mental_health_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Simple feature collection with 6 features and 13 fields Geometry type: POINT Dimension: XY Bounding box: xmin: -78.82786 ymin: 42.83657 xmax: -78.80371 ymax: 42.85067 Geodetic CRS: WGS 84 # A tibble: 6 × 14 date ADDRESS DISPATCHDI DISPATCHSE DISPATCHCO description street_name <chr> <chr> <chr> <chr> <chr> <chr> <chr><br>
 1 4/23/2024 0:… 124 PR… BUFA BUF4 NEIGH NEIGHBOR T… PRIES<br>
-2 4/23/2024 0:… 368 BR… BUFB BUF3 ASSIST ASSIST CIT… BROADWAY<br>
-3 4/23/2024 0:… 170 HE… BUFD BUF1 PROP PROPERTY D… HERTEL<br>
-4 4/8/2024 0:0… 462 GR… BUFE BUF4 NARC NARCOTICS GRIDER<br>
-5 4/14/2024 0:… 220 MI… BUFE BUF1 LANDTR LANDLORD T… MINNESOTA<br>
-6 4/14/2024 0:… 161 HE… BUFE BUF1 DOM DOMESTIC T… HEWITT<br>
-# ℹ 6 more variables: DISPOSITIO <chr>, full_address <chr>, City <chr>, # Latitude <dbl>, Longitude <dbl>, geometry &lt;POINT [°]&gt;</dbl></dbl></chr></chr></chr></chr></chr></chr></chr></chr></chr></chr></p>
+2 3/6/2024 0:0… 14 EDE… BUFA BUF4 DOM DOMESTIC T… EDEN<br>
+3 3/7/2024 0:0… 2066 S… BUFA BUF4 NARC NARCOTICS PARK<br>
+4 3/13/2024 0:… 100 DU… BUFA BUF3 PROP PROPERTY D… DUNDEE<br>
+5 3/15/2024 0:… 71 LOR… BUFA BUF3 MISC MISCELLANE… LORRAINE<br>
+6 3/2/2024 0:0… 16 LOR… BUFA BUF3 DOM DOMESTIC T… LORRAINE<br>
+# ℹ 7 more variables: DISPOSITIO <chr>, full_address <chr>, City <chr>, # Latitude <dbl>, Longitude <dbl>, zipcode <chr>, geometry &lt;POINT [°]&gt;</chr></dbl></dbl></chr></chr></chr></chr></chr></chr></chr></chr></chr></chr></p>
 <p>Step 4:</p>
 </section>
 <section id="create-a-summary-table-of-the-call-data." class="level1">
 <h1>Create a summary table of the call data.</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each unique number and order by frequency</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> mental_health_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(description, <span class="at">sort =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span>   <span class="co"># counts and sorts descending by n</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Frequency =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each description and order by frequency</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>summary_table_desc <span class="ot">&lt;-</span> mental_health_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(description, <span class="at">sort =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span>   <span class="co"># counts and sorts descending by n</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Frequency =</span> n)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each zipcode and order by frequency</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>summary_table_zip <span class="ot">&lt;-</span> mental_health_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(zipcode, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>   <span class="co"># count how many times each ZIP appears</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Frequency =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Step 5:</p>
 </section>
-<section id="plot-a-bar-chart-summary-of-call-frequency" class="level1">
-<h1>Plot a bar chart summary of call frequency</h1>
+<section id="plot-a-bar-chart-summary-of-call-zipcode-frequency" class="level1">
+<h1>Plot a bar chart summary of call &amp; zipcode frequency</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot of the call frequency and description</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_desc, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(description), <span class="at">y =</span> Frequency)) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency of Mental Health Calls in Buffalo, New York"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"March to April of 2024"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Call Description"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot of the zipcode frequency and description</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_zip, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(zipcode), <span class="at">y =</span> Frequency)) <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency of Mental Health Calls per Zipcode in Buffalo, New York"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"March to April of 2024"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Zipcode"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 <p>Step 6:</p>
 </section>
 <section id="map-most-frequent-call-types-by-zipcode" class="level1">
 <h1>Map most frequent call types by zipcode</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Top call and description </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>top_calls <span class="ot">&lt;-</span> mental_health_data <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(zipcode, description) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop_last"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> n, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Join back for geometry zip data </span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>top_calls_zip <span class="ot">&lt;-</span> zipcode_json <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(top_calls, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"zcta5ce10"</span> <span class="ot">=</span> <span class="st">"zipcode"</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> top_calls_zip, <span class="fu">aes</span>(<span class="at">fill =</span> description), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"C"</span>) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Frequent Mental Health 911 Calls by ZIP Code (Mar–Apr 2024)"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"City of Buffalo | Data: Erie County 911"</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 <p>Step 7:</p>
 </section>
 <section id="map-call-volume-by-zip-code" class="level1">
