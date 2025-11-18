@@ -80,7 +80,6 @@ zipcode_json <- st_read(url_json, quiet = TRUE)
 census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = FALSE)
 readRenviron("~/.Renviron") 
 
-
 # Download census data
 census_data <- get_acs(
   geography = "zcta",                       # use "zcta" or "zip code tabulation area"
