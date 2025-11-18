@@ -12,7 +12,7 @@ code-fold: true
 
 # Introduction
 
-\[ Emergency services are essential in times of crisis's, providing
+Emergency services are essential in times of crisis's, providing
 necessary response teams to areas in need with support from Police,
 Fire, and Medical professionals. Unfortunately high call volumes and low
 staffing can result in misguided directives and improper handling of
@@ -23,9 +23,7 @@ household income. The results of this analysis will assist in
 understanding the use of Buffalo's resources and how socio-economic
 factors can be indicative of ... \]
 
-# Materials and methods
-
-\[\~ 200 words\]
+# Materials and Methods
 
 Overview: Import, clean and categorize required data from March and
 April of 2024 into Mental Health categories. Plot call types and call
@@ -49,7 +47,7 @@ summary of call frequency 6. Map most frequent call types by zipcode 7.
 Map call volume by zip code 8. Create and run a regression model on call
 frequency versus median income. 9. Plot regression.
 
-Step 1: Load any required packages:
+### Step 1: Load any required packages & necessary data:
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -66,8 +64,6 @@ library(leaflet)
 library(htmltools)
 library(tidyr)
 ```
-
-## Data
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -98,7 +94,7 @@ census_data <- get_acs(
 
 ```
 
-Step 2: Clean & Convert data
+### Step 2: Clean & Convert data
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -119,11 +115,9 @@ census_clean <- census_data %>%
 
 ```
 
-Step 3:
+### Step 3: Define Mental Health Categories and assign them to the call data
 
-# Define Mental Health Categories and assign them to the call data
-
-```{r, message=F, warning=F}
+```{r, message=F, warning=F, results=F}
 #| results: hide
 # Categories given by PPG Buffalo 
 
@@ -150,9 +144,7 @@ head(mental_health_data)
 
 ```
 
-Step 4:
-
-# Create a summary table of the call data.
+### Step 4: Create a summary table of the call data.
 
 ```{r, message=F, warning=F}
 
@@ -167,9 +159,7 @@ summary_table_zip <- mental_health_data %>%
   rename(Frequency = n)
 ```
 
-Step 5:
-
-# Plot a bar chart summary of call & zipcode frequency
+### Step 5: Create a summary of call & zipcode frequencies
 
 ```{r, message=F, warning=F}
 # ggplot of the call frequency and description
@@ -195,9 +185,7 @@ zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequ
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
 
-Step 6:
-
-# Map most frequent call types by zipcode
+### Step 6: Map most frequent call types by zipcode
 
 ```{r, message=F, warning=F}
 
@@ -224,9 +212,7 @@ call_type_map <- ggplot() +
 
 ```
 
-Step 7:
-
-# Map call volume by zip code
+### Step 7: Map call volume by zip code
 
 ```{r, message=F, warning=F}
 # Frequency call 
@@ -261,9 +247,7 @@ call_frequency_map <- leaflet(freq_calls_zip) %>%
 
 ```
 
-Step 8:
-
-# Create and run a regression model on call frequency versus median income
+### Step 8: Create and run a regression model on call frequency vs median income
 
 ```{r, message=F, warning=F}
 
@@ -291,9 +275,7 @@ model2 <- lm(Frequency ~ median_income + total_pop, data = zip_data)
 summary(model2)
 ```
 
-Step 9:
-
-# Plot Regression
+### Step 9: Plot Regression
 
 ```{r, message=F, warning=F}
 
@@ -323,53 +305,15 @@ regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
 
 ```
 
-Step 10 (optional):
-
-# Spatial regression?
+### Step 10: Spatial regression
 
 ```{r, message=F, warning=F}
-#install.packages("spdep")
-#install.packages("spatialreg")
 
-#library(spdep)
-#library(spatialreg)
-
-# Create neighbors list (based on shared boundaries)
-#nb <- poly2nb(zip_data)
-
-# Convert to spatial weights list
-#lw <- nb2listw(nb, style = "W")  # row-standardized weights
-
-#ols_model <- lm(Frequency ~ median_income, data = zip_data)
-
-#moran.test(residuals(ols_model), lw)
-
-#lag_model <- lagsarlm(Frequency ~ median_income, data = zip_data, listw = lw)
-
-#zip_data$residuals <- residuals(lag_model)
-
-#tmap_mode("view")
-
-#tm_shape(zip_data) +
-#  tm_polygons("residuals", palette = "RdBu", midpoint = 0) +
-#  tm_layout(title = "Spatial Lag Model Residuals (Call_Count ~ Median_Income)")
-
-# Red under predicts(more calls than expected) - blue over predicts (fewer calls than expected)
-#tm_shape(zip_data) +
-#  tm_polygons(
-#    "residuals",
-#    palette = "-RdBu",
-#    midpoint = 0,
-#    title = "Model Residuals"
-#  ) +
-#  tm_layout(
-#    title = "Spatial Lag Model Residuals (Call_Count ~ Population + Income)"
-#  )
-
-
+# Create normalization data for every 1000 people
 zip_data <- zip_data %>%
   mutate(calls_per_1000 = (Frequency / total_pop) * 1000)
 
+# Palette creation for color
 pal <- colorNumeric("viridis", domain = zip_data$calls_per_1000)
 
 # Normalize
