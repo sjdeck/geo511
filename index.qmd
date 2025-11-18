@@ -64,6 +64,7 @@ library(tidycensus)
 library(leaflet)
 library(htmltools)
 library(tidyr)
+library(viridis)
 ```
 
 ## Data
@@ -97,7 +98,7 @@ census_data <- get_acs(
 
 ```
 
-Step 2: \# Clean & Convert data
+Step 2: Clean & Convert data
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -144,6 +145,8 @@ mental_health_data <- calls_sf %>%
 # Preview of data
 head(mental_health_data)
 
+# Make a color palette with this data for cohesive info
+pal_vec <- setNames(viridis(length(mental_health_desc)), mental_health_desc)
 
 ```
 
@@ -178,11 +181,12 @@ descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Fr
     x = "Call Description",
     y = "Frequency"
   ) +
+   scale_fill_manual(values = pal_vec) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 # ggplot of the zipcode frequency and description
 zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
-  geom_bar(stat = "identity", fill = "lightgreen") + 
+  geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
     title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York",
     caption = "March to April of 2024",
