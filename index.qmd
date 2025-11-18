@@ -53,7 +53,7 @@ library(tidyr)
 
 ## Data
 
-```{r}
+```{r, message=F, warning=F}
 #| results: hide
 # Import 911 data CSV from github data folder
 data_911_url <- "https://raw.githubusercontent.com/sjdeck/geo511/refs/heads/master/data/mar2apr2024_latlong.csv"
@@ -85,7 +85,7 @@ census_data <- get_acs(
 Step 2: 
 # Clean & Convert data 
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 #| results: hide
 # Convert to an sf object to "enable standard spatial data handling, analysis, and visualization"
 calls_sf <- st_as_sf(data_911, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE)
@@ -108,7 +108,7 @@ Step 3:
 
 # Define Mental Health Categories and assign them to the call data
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 #| results: hide
 # Categories given by PPG Buffalo 
 
@@ -137,7 +137,7 @@ Step 4:
 
 # Create a summary table of the call data. 
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 
 # Count each description and order by frequency
 summary_table_desc <- mental_health_data %>%
@@ -154,7 +154,7 @@ Step 5:
 
 # Plot a bar chart summary of call & zipcode frequency 
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 # ggplot of the call frequency and description
 ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "steelblue") + 
@@ -182,7 +182,7 @@ Step 6:
 
 # Map most frequent call types by zipcode 
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 
 # Top call and description 
 top_calls <- mental_health_data %>%
@@ -211,7 +211,7 @@ Step 7:
 
 # Map call volume by zip code
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 # Frequency call 
 freq_calls_zip <- summary_table_zip %>%
   st_drop_geometry() %>%
@@ -248,7 +248,7 @@ Step 8:
 
 # Create and run a regression model on call frequency versus median income
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 
 # Drop geometry on zip summary data
 zip_frequency <- summary_table_zip %>%
@@ -278,7 +278,7 @@ Step 9:
 
 # Plot Regression
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 
 # Visualize
 ggplot(zip_data, aes(x = median_income, y = Frequency)) +
@@ -310,7 +310,7 @@ Step 10 (optional):
 
 # Spatial regression?
 
-```{r, results='asis'}
+```{r, message=F, warning=F}
 #install.packages("spdep")
 #install.packages("spatialreg")
 
