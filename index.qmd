@@ -64,7 +64,6 @@ library(tidycensus)
 library(leaflet)
 library(htmltools)
 library(tidyr)
-library(viridis)
 ```
 
 ## Data
