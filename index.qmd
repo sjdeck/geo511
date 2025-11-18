@@ -181,7 +181,6 @@ descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Fr
     x = "Call Description",
     y = "Frequency"
   ) +
-   scale_fill_manual(values = pal_vec) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 # ggplot of the zipcode frequency and description
