@@ -145,7 +145,7 @@ mental_health_data <- calls_sf %>%
 head(mental_health_data)
 
 # Make a color palette with this data for cohesive info
-pal_vec <- setNames(viridis(length(mental_health_desc)), mental_health_desc)
+#pal_vec <- setNames(viridis(length(mental_health_desc)), mental_health_desc)
 
 ```
 
