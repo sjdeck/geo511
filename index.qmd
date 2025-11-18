@@ -4,36 +4,51 @@ author: Sydney Deck
 subtitle: Exploring the Correlation Between Mental Health–Related Emergency Calls and Median Household Income.
 date: today
 date-format: long
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Introduction
 
-\[\ Emergency services are essential in times of crisis's, providing necessary response teams to areas in need with support from Police, Fire, and Medical professionals. Unfortunately high call volumes and low staffing can result in misguided directives and improper handling of sensitive situations. This report will provide further insight on call classification and distribution of mental health related calls within the City of Buffalo, including any potential correlation between median household income. The results of this analysis will assist in understanding the use of Buffalo's resources and how socio-economic factors can be indicative of ...    \]
+\[ Emergency services are essential in times of crisis's, providing
+necessary response teams to areas in need with support from Police,
+Fire, and Medical professionals. Unfortunately high call volumes and low
+staffing can result in misguided directives and improper handling of
+sensitive situations. This report will provide further insight on call
+classification and distribution of mental health related calls within
+the City of Buffalo, including any potential correlation between median
+household income. The results of this analysis will assist in
+understanding the use of Buffalo's resources and how socio-economic
+factors can be indicative of ... \]
 
 # Materials and methods
 
 \[\~ 200 words\]
 
-Overview: Import, clean and categorize required data from March and April of 2024 into Mental Health categories. Plot call types and call volumes. Run a regression analysis on specified mental health call types and median income values. 
+Overview: Import, clean and categorize required data from March and
+April of 2024 into Mental Health categories. Plot call types and call
+volumes. Run a regression analysis on specified mental health call types
+and median income values.
 
-Data required for this analysis: 
-  - 911 call data provided by the City of Buffalo Police Department for the months of March and April in 2024. Data can be found at 'https://figshare.com/articles/dataset/Buffalo_911_Call_March_and_April_2024/30585986?file=59454170'
-  - Census tract data from 'https://www.census.gov/data/' using an API key from 2023, the most recent and compatible dataset.     Must include median income data and total populaton data. 
-  - Zipcode boundaries from 'https://data.buffalony.gov/' using an API key. 
+Data required for this analysis: - 911 call data provided by the City of
+Buffalo Police Department for the months of March and April in 2024.
+Data can be found at
+'https://figshare.com/articles/dataset/Buffalo_911_Call_March_and_April_2024/30585986?file=59454170' -
+Census tract data from 'https://www.census.gov/data/' using an API key
+from 2023, the most recent and compatible dataset. Must include median
+income data and total populaton data. - Zipcode boundaries from
+'https://data.buffalony.gov/' using an API key.
 
-Necessary steps:
-  1. Import necessary libraries and datasets for use. 
-  2. Clean up imported data and complete pre-processing requirements.
-  3. Define mental health categories and assign them to the call data.
-  4. Create a summary table of call types and locations. 
-  5. Plot a bar chart summary of call frequency 
-  6. Map most frequent call types by zipcode
-  7. Map call volume by zip code
-  8. Create and run a regression model on call frequency versus median income. 
-  9. Plot regression. 
+Necessary steps: 1. Import necessary libraries and datasets for use. 2.
+Clean up imported data and complete pre-processing requirements. 3.
+Define mental health categories and assign them to the call data. 4.
+Create a summary table of call types and locations. 5. Plot a bar chart
+summary of call frequency 6. Map most frequent call types by zipcode 7.
+Map call volume by zip code 8. Create and run a regression model on call
+frequency versus median income. 9. Plot regression.
 
-Step 1: 
-Load any required packages:
+Step 1: Load any required packages:
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -82,8 +97,7 @@ census_data <- get_acs(
 
 ```
 
-Step 2: 
-# Clean & Convert data 
+Step 2: \# Clean & Convert data
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -135,7 +149,7 @@ head(mental_health_data)
 
 Step 4:
 
-# Create a summary table of the call data. 
+# Create a summary table of the call data.
 
 ```{r, message=F, warning=F}
 
@@ -152,11 +166,11 @@ summary_table_zip <- mental_health_data %>%
 
 Step 5:
 
-# Plot a bar chart summary of call & zipcode frequency 
+# Plot a bar chart summary of call & zipcode frequency
 
 ```{r, message=F, warning=F}
 # ggplot of the call frequency and description
-ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
+descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
     title = "Frequency of Mental Health Calls in Buffalo, New York",
@@ -167,7 +181,7 @@ ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 # ggplot of the zipcode frequency and description
-ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
+zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "lightgreen") + 
   labs(
     title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York",
@@ -180,7 +194,7 @@ ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) +
 
 Step 6:
 
-# Map most frequent call types by zipcode 
+# Map most frequent call types by zipcode
 
 ```{r, message=F, warning=F}
 
@@ -196,7 +210,7 @@ top_calls_zip <- zipcode_json %>%
   left_join(top_calls, by = c("zcta5ce10" = "zipcode")) %>%
   select(zcta5ce10, n, description)
 
-ggplot() +
+call_type_map <- ggplot() +
   geom_sf(data = top_calls_zip, aes(fill = description), color = "black") +
   scale_fill_viridis_d(option = "C") +
   labs(
@@ -226,7 +240,7 @@ freq_calls_zip <- zipcode_json %>%
 pal <- colorNumeric("viridis", domain = freq_calls_zip$Frequency)
 
 # Create map
-leaflet(freq_calls_zip) %>%
+call_frequency_map <- leaflet(freq_calls_zip) %>%
   addTiles() %>%  # default basemap
   addPolygons(
     fillColor = ~pal(Frequency),
@@ -281,7 +295,7 @@ Step 9:
 ```{r, message=F, warning=F}
 
 # Visualize
-ggplot(zip_data, aes(x = median_income, y = Frequency)) +
+regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
   geom_point() +
   geom_smooth(method = "lm", se = TRUE, color = "blue") +
   labs(
@@ -292,17 +306,17 @@ ggplot(zip_data, aes(x = median_income, y = Frequency)) +
   theme_minimal()
 
 # Visualize
-ggplot(zip_data, aes(x = median_income, y = Frequency, color = total_pop)) +
-  geom_point(size = 3, alpha = 0.8) +
-  scale_color_viridis_c(option = "C") +
-  geom_smooth(method = "lm", se = TRUE, color = "black") +
-  labs(
-    title = "911 Calls vs Median Income (colored by Population)",
-    x = "Median Household Income ($)",
-    y = "Total 911 Calls",
-    color = "Total Population"
-  ) +
-  theme_minimal()
+#ggplot(zip_data, aes(x = median_income, y = Frequency, color = total_pop)) +
+#  geom_point(size = 3, alpha = 0.8) +
+#  scale_color_viridis_c(option = "C") +
+#  geom_smooth(method = "lm", se = TRUE, color = "black") +
+#  labs(
+#    title = "911 Calls vs Median Income (colored by Population)",
+#    x = "Median Household Income ($)",
+#    y = "Total 911 Calls",
+#    color = "Total Population"
+#  ) +
+#  theme_minimal()
 
 ```
 
@@ -356,7 +370,7 @@ zip_data <- zip_data %>%
 pal <- colorNumeric("viridis", domain = zip_data$calls_per_1000)
 
 # Normalize
-leaflet(zip_data) %>%
+normalize_map <- leaflet(zip_data) %>%
   addProviderTiles("CartoDB.Positron") %>%
   addPolygons(
     fillColor = ~pal(calls_per_1000),
@@ -376,11 +390,26 @@ leaflet(zip_data) %>%
 
 \[\~200 words\]
 
-Tables and figures (maps and other graphics) are carefully planned to convey the results of your analysis. Intense exploration and evidence of many trials and failures. The author looked at the data in many different ways before coming to the final presentation of the data.
+Tables and figures (maps and other graphics) are carefully planned to
+convey the results of your analysis. Intense exploration and evidence of
+many trials and failures. The author looked at the data in many
+different ways before coming to the final presentation of the data.
 
 Show tables, plots, etc. and describe them.
 
 ```{r, fig.width=6, fig.height=3, fig.cap="Map of completely random data"}
+
+descr_freq_bar
+
+call_type_map
+
+zipcode_freq_bar
+
+call_frequency_map
+
+normalize_map
+
+regression_plot
 
 ```
 
@@ -398,7 +427,9 @@ Show tables, plots, etc. and describe them.
 
 \[\~200 words\]
 
-Clear summary adequately describing the results and putting them in context. Discussion of further questions and ways to continue investigation.
+Clear summary adequately describing the results and putting them in
+context. Discussion of further questions and ways to continue
+investigation.
 
 # References
 
