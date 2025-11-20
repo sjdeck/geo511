@@ -8,11 +8,11 @@ editor:
   markdown: 
     wrap: 72
 code-fold: true
----
+--- 
 
 # Introduction
 
-Emergency services are essential in times of crisis's, providing
+Emergency services are essential in times of crisies, providing
 necessary response teams to areas in need with support from Police,
 Fire, and Medical professionals. Unfortunately high call volumes and low
 staffing can result in misguided directives and improper handling of
