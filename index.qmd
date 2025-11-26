@@ -12,7 +12,7 @@ code-fold: true
 
 # Introduction
 
-Emergency services are essential in times of crisis's, providing
+Emergency services are essential in times of crisies, providing
 necessary response teams to areas in need with support from Police,
 Fire, and Medical professionals. Unfortunately high call volumes and low
 staffing can result in misguided directives and improper handling of
@@ -21,7 +21,7 @@ classification and distribution of mental health related calls within
 the City of Buffalo, including any potential correlation between median
 household income. The results of this analysis will assist in
 understanding the use of Buffalo's resources and how socio-economic
-factors can be indicative of ... \]
+factors can be indicative of improper resource distribution and improved community development. 
 
 # Materials and Methods
 
@@ -63,6 +63,7 @@ library(tidycensus)
 library(leaflet)
 library(htmltools)
 library(tidyr)
+library(plotly)
 ```
 
 ```{r, message=F, warning=F}
@@ -346,7 +347,7 @@ Show tables, plots, etc. and describe them.
 
 ```{r, fig.width=6, fig.height=3, fig.cap="Map of completely random data"}
 
-descr_freq_bar
+ggplotly(descr_freq_bar)
 
 call_type_map
 
