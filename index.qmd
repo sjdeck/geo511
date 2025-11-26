@@ -351,7 +351,7 @@ ggplotly(descr_freq_bar)
 
 call_type_map
 
-zipcode_freq_bar
+ggplotly(zipcode_freq_bar)
 
 call_frequency_map
 
