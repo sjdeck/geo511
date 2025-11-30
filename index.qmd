@@ -10,7 +10,7 @@ editor:
 code-fold: true
 ---
 
-# Introduction
+# 1. Introduction
 
 Emergency services are essential in times of crisies, providing
 necessary response teams to areas in need with support from Police,
@@ -21,9 +21,10 @@ classification and distribution of mental health related calls within
 the City of Buffalo, including any potential correlation between median
 household income. The results of this analysis will assist in
 understanding the use of Buffalo's resources and how socio-economic
-factors can be indicative of improper resource distribution and improved community development. 
+factors can be indicative of improper resource distribution and improved
+community development.
 
-# Materials and Methods
+# 2. Materials and Methods
 
 Overview: Import, clean and categorize required data from March and
 April of 2024 into Mental Health categories. Plot call types and call
@@ -47,7 +48,7 @@ summary of call frequency 6. Map most frequent call types by zipcode 7.
 Map call volume by zip code 8. Create and run a regression model on call
 frequency versus median income. 9. Plot regression.
 
-### Step 1: Load any required packages & necessary data:
+### 2.1 Data Sources
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -95,7 +96,9 @@ census_data <- get_acs(
 
 ```
 
-### Step 2: Clean & Convert data
+### 2.2 Preprocessing and Data Preparation 
+
+##### Cleaning and Filtering 911 records
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -116,7 +119,7 @@ census_clean <- census_data %>%
 
 ```
 
-### Step 3: Define Mental Health Categories and assign them to the call data
+##### Categorizing and assigning call descriptions
 
 ```{r, message=F, warning=F, results=F}
 #| results: hide
@@ -145,7 +148,19 @@ head(mental_health_data)
 
 ```
 
-### Step 4: Create a summary table of the call data.
+### 2.3 Analytical Methods
+
+#### 2.3.1 Call Type Analysis
+
+##### Categorize call type, map dominate calls, frequency bar chart
+
+#### 2.3.2 Call Frequency Analysis
+
+##### call volume per zip and per 1,000 residents, heatmap/choropleth, identify high volume
+
+#### 2.3.3 Income vs Call Activity Analysis
+
+##### Regression model, map high call/low-income pattern 
 
 ```{r, message=F, warning=F}
 
@@ -334,7 +349,7 @@ normalize_map <- leaflet(zip_data) %>%
   addLegend(pal = pal, values = ~calls_per_1000, title = "Calls per 1,000 Residents")
 ```
 
-# Results
+# 3. Results
 
 \[\~200 words\]
 
@@ -371,7 +386,7 @@ regression_plot
 
 ```
 
-# Conclusions
+# 4. Conclusions
 
 \[\~200 words\]
 
@@ -379,6 +394,6 @@ Clear summary adequately describing the results and putting them in
 context. Discussion of further questions and ways to continue
 investigation.
 
-# References
+# 5. References
 
 All sources are cited in a consistent manner
