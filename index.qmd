@@ -52,7 +52,7 @@ frequency versus median income. 9. Plot regression.
 
 ```{r, message=F, warning=F}
 #| results: hide
-#install.packages(c("tigris", "sf"))
+install.packages(c("tigris", "sf", "plotly"))
 #install.packages("tidycensus", dependencies = TRUE)
 
 library(dplyr)
