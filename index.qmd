@@ -140,12 +140,6 @@ mental_health_data <- calls_sf %>%
     zipcode = zcta5ce10
   )
 
-# Preview of data
-head(mental_health_data)
-
-# Make a color palette with this data for cohesive info
-#pal_vec <- setNames(viridis(length(mental_health_desc)), mental_health_desc)
-
 ```
 
 ### 2.3 Analytical Methods
@@ -153,14 +147,6 @@ head(mental_health_data)
 #### 2.3.1 Call Type Analysis
 
 ##### Categorize call type, map dominate calls, frequency bar chart
-
-#### 2.3.2 Call Frequency Analysis
-
-##### call volume per zip and per 1,000 residents, heatmap/choropleth, identify high volume
-
-#### 2.3.3 Income vs Call Activity Analysis
-
-##### Regression model, map high call/low-income pattern 
 
 ```{r, message=F, warning=F}
 
@@ -175,8 +161,6 @@ summary_table_zip <- mental_health_data %>%
   rename(Frequency = n)
 ```
 
-### Step 5: Create a summary of call & zipcode frequencies
-
 ```{r, message=F, warning=F}
 # ggplot of the call frequency and description
 descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
@@ -188,7 +172,24 @@ descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Fr
     y = "Frequency"
   ) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
 
+```{r, message=F, warning=F}
+
+# Top call and description 
+top_calls <- mental_health_data %>%
+  st_drop_geometry() %>%
+  group_by(zipcode, description) %>%
+  summarise(n = n(), .groups = "drop_last") %>%
+  slice_max(order_by = n, n = 1, with_ties = FALSE)
+
+```
+
+#### 2.3.2 Call Frequency Analysis
+
+##### call volume per zip and per 1,000 residents, heatmap/choropleth, identify high volume
+
+```{r, message=F, warning=F}
 # ggplot of the zipcode frequency and description
 zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "steelblue") + 
@@ -201,17 +202,7 @@ zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequ
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
 
-### Step 6: Map most frequent call types by zipcode
-
 ```{r, message=F, warning=F}
-
-# Top call and description 
-top_calls <- mental_health_data %>%
-  st_drop_geometry() %>%
-  group_by(zipcode, description) %>%
-  summarise(n = n(), .groups = "drop_last") %>%
-  slice_max(order_by = n, n = 1, with_ties = FALSE)
-
 # Join back for geometry zip data 
 top_calls_zip <- zipcode_json %>%
   left_join(top_calls, by = c("zcta5ce10" = "zipcode")) %>%
@@ -227,8 +218,6 @@ call_type_map <- ggplot() +
   theme_minimal()
 
 ```
-
-### Step 7: Map call volume by zip code
 
 ```{r, message=F, warning=F}
 # Frequency call 
@@ -263,8 +252,6 @@ call_frequency_map <- leaflet(freq_calls_zip) %>%
 
 ```
 
-### Step 8: Create and run a regression model on call frequency vs median income
-
 ```{r, message=F, warning=F}
 
 # Drop geometry on zip summary data
@@ -281,49 +268,6 @@ zip_data <- zipcode_json %>%
   left_join(zip_frequency, by = c("zcta5ce10" = "zipcode")) %>%
   left_join(census_drop, by = c("geoid10" = "GEOID")) %>%
   mutate(Frequency = replace_na(Frequency, 0))
-  
-# Run simple regression model
-model <- lm(Frequency ~ median_income, data = zip_data)
-summary(model)
-
-# Run simple regression model + total_pop
-model2 <- lm(Frequency ~ median_income + total_pop, data = zip_data)
-summary(model2)
-```
-
-### Step 9: Plot Regression
-
-```{r, message=F, warning=F}
-
-# Visualize
-regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = TRUE, color = "blue") +
-  labs(
-    title = "Relationship Between 911 Call Volume and Median Household Income",
-    x = "Median Household Income ($)",
-    y = "Total 911 Calls"
-  ) +
-  theme_minimal()
-
-# Visualize
-#ggplot(zip_data, aes(x = median_income, y = Frequency, color = total_pop)) +
-#  geom_point(size = 3, alpha = 0.8) +
-#  scale_color_viridis_c(option = "C") +
-#  geom_smooth(method = "lm", se = TRUE, color = "black") +
-#  labs(
-#    title = "911 Calls vs Median Income (colored by Population)",
-#    x = "Median Household Income ($)",
-#    y = "Total 911 Calls",
-#    color = "Total Population"
-#  ) +
-#  theme_minimal()
-
-```
-
-### Step 10: Spatial regression
-
-```{r, message=F, warning=F}
 
 # Create normalization data for every 1000 people
 zip_data <- zip_data %>%
@@ -347,6 +291,34 @@ normalize_map <- leaflet(zip_data) %>%
     ) %>% lapply(htmltools::HTML)
   ) %>%
   addLegend(pal = pal, values = ~calls_per_1000, title = "Calls per 1,000 Residents")
+```
+#### 2.3.3 Income vs Call Activity Analysis
+
+##### Regression model, map high call/low-income pattern 
+
+```{r, message=F, warning=F}
+
+# Run simple regression model
+model <- lm(Frequency ~ median_income, data = zip_data)
+summary(model)
+
+# Run simple regression model + total_pop
+model2 <- lm(Frequency ~ median_income + total_pop, data = zip_data)
+summary(model2)
+```
+
+```{r, message=F, warning=F}
+
+# Visualize
+regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(
+    title = "Relationship Between 911 Call Volume and Median Household Income",
+    x = "Median Household Income ($)",
+    y = "Total 911 Calls"
+  ) +
+  theme_minimal()
 ```
 
 # 3. Results
