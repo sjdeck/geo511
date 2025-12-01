@@ -1,9 +1,68 @@
 ---
 title: "About"
+format: dashboard
+editor: visual
 ---
 
-About this site
+---
+title: "Buffalo Median Income Dashboard"
+format: dashboard
+---
 
-```{r}
-1 + 1
+```{r setup}
+library(tidycensus)
+library(tigris)
+library(sf)
+library(dplyr)
+library(leaflet)
+
+options(tigris_use_cache = TRUE)
+census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = FALSE)
+
+# Buffalo ZIP codes (filter to Erie County first, then filter ZIPs overlapping Buffalo)
+zip_shapes <- zctas(cb = TRUE, year = 2020) |>
+  st_transform(4326)
+
+# Boundaries for City of Buffalo to filter ZIPs
+buffalo <- places(state = "NY") |>
+  st_as_sf() |>
+  st_transform(4326) |>
+  filter(NAME == "Buffalo")
+
+# Keep only ZIPs that intersect Buffalo city boundary
+buffalo_zips <- st_intersection(zip_shapes, buffalo |> select(NAME))
+
+# Pull ACS median income for those ZIP codes
+census_data <- get_acs(
+  geography = "zcta",
+  variables = c(median_income = "B19013_001"),
+  year = 2023,
+  survey = "acs5",
+  geometry = FALSE
+)
+
+# Join ACS data to geometry
+buffalo_income <- buffalo_zips |>
+  left_join(census_data, by = c("GEOID20" = "GEOID"))
+
+# Color palette for income
+pal <- colorNumeric("viridis", domain = buffalo_income$estimate)
+
+leaflet(buffalo_income) |>
+addProviderTiles(providers$CartoDB.Positron) |>
+addPolygons(
+fillColor = ~pal(estimate),
+color = "black",
+weight = 1,
+fillOpacity = 0.7,
+label = ~paste0("ZIP: ", GEOID20, "",
+"Median Income: $", formatC(estimate, format="d", big.mark=",")),
+labelOptions = labelOptions(direction = "auto")
+) |>
+addLegend(
+pal = pal,
+values = ~estimate,
+title = "Median Household Income",
+position = "bottomright"
+)
 ```
