@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – GEO511 911 Project</title>
+<title>Buffalo Median Income Dashboard – GEO511 911 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,10 +37,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,11 +80,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
 
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent quarto-light">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -130,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">Buffalo Median Income Dashboard</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -138,45 +128,418 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Buffalo Median Income Dashboard</a></div>
+        
+        
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   1%
+  |                                                                            
+  |=                                                                     |   1%
+  |                                                                            
+  |=                                                                     |   2%
+  |                                                                            
+  |==                                                                    |   2%
+  |                                                                            
+  |==                                                                    |   3%
+  |                                                                            
+  |===                                                                   |   4%
+  |                                                                            
+  |===                                                                   |   5%
+  |                                                                            
+  |====                                                                  |   5%
+  |                                                                            
+  |====                                                                  |   6%
+  |                                                                            
+  |=====                                                                 |   7%
+  |                                                                            
+  |=====                                                                 |   8%
+  |                                                                            
+  |======                                                                |   8%
+  |                                                                            
+  |======                                                                |   9%
+  |                                                                            
+  |=======                                                               |   9%
+  |                                                                            
+  |=======                                                               |  10%
+  |                                                                            
+  |=======                                                               |  11%
+  |                                                                            
+  |========                                                              |  11%
+  |                                                                            
+  |========                                                              |  12%
+  |                                                                            
+  |=========                                                             |  12%
+  |                                                                            
+  |=========                                                             |  13%
+  |                                                                            
+  |==========                                                            |  14%
+  |                                                                            
+  |==========                                                            |  15%
+  |                                                                            
+  |===========                                                           |  15%
+  |                                                                            
+  |===========                                                           |  16%
+  |                                                                            
+  |============                                                          |  17%
+  |                                                                            
+  |============                                                          |  18%
+  |                                                                            
+  |=============                                                         |  18%
+  |                                                                            
+  |=============                                                         |  19%
+  |                                                                            
+  |==============                                                        |  19%
+  |                                                                            
+  |==============                                                        |  20%
+  |                                                                            
+  |===============                                                       |  21%
+  |                                                                            
+  |===============                                                       |  22%
+  |                                                                            
+  |================                                                      |  22%
+  |                                                                            
+  |================                                                      |  23%
+  |                                                                            
+  |=================                                                     |  24%
+  |                                                                            
+  |=================                                                     |  25%
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |==================                                                    |  26%
+  |                                                                            
+  |===================                                                   |  26%
+  |                                                                            
+  |===================                                                   |  27%
+  |                                                                            
+  |===================                                                   |  28%
+  |                                                                            
+  |====================                                                  |  28%
+  |                                                                            
+  |====================                                                  |  29%
+  |                                                                            
+  |=====================                                                 |  29%
+  |                                                                            
+  |=====================                                                 |  30%
+  |                                                                            
+  |=====================                                                 |  31%
+  |                                                                            
+  |======================                                                |  31%
+  |                                                                            
+  |======================                                                |  32%
+  |                                                                            
+  |=======================                                               |  32%
+  |                                                                            
+  |=======================                                               |  33%
+  |                                                                            
+  |========================                                              |  34%
+  |                                                                            
+  |========================                                              |  35%
+  |                                                                            
+  |=========================                                             |  35%
+  |                                                                            
+  |=========================                                             |  36%
+  |                                                                            
+  |==========================                                            |  37%
+  |                                                                            
+  |==========================                                            |  38%
+  |                                                                            
+  |===========================                                           |  38%
+  |                                                                            
+  |===========================                                           |  39%
+  |                                                                            
+  |============================                                          |  39%
+  |                                                                            
+  |============================                                          |  40%
+  |                                                                            
+  |============================                                          |  41%
+  |                                                                            
+  |=============================                                         |  41%
+  |                                                                            
+  |=============================                                         |  42%
+  |                                                                            
+  |==============================                                        |  42%
+  |                                                                            
+  |==============================                                        |  43%
+  |                                                                            
+  |===============================                                       |  44%
+  |                                                                            
+  |===============================                                       |  45%
+  |                                                                            
+  |================================                                      |  45%
+  |                                                                            
+  |================================                                      |  46%
+  |                                                                            
+  |=================================                                     |  47%
+  |                                                                            
+  |=================================                                     |  48%
+  |                                                                            
+  |==================================                                    |  48%
+  |                                                                            
+  |==================================                                    |  49%
+  |                                                                            
+  |===================================                                   |  49%
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |===================================                                   |  51%
+  |                                                                            
+  |====================================                                  |  51%
+  |                                                                            
+  |====================================                                  |  52%
+  |                                                                            
+  |=====================================                                 |  52%
+  |                                                                            
+  |=====================================                                 |  53%
+  |                                                                            
+  |======================================                                |  54%
+  |                                                                            
+  |======================================                                |  55%
+  |                                                                            
+  |=======================================                               |  55%
+  |                                                                            
+  |=======================================                               |  56%
+  |                                                                            
+  |========================================                              |  56%
+  |                                                                            
+  |========================================                              |  57%
+  |                                                                            
+  |========================================                              |  58%
+  |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
+  |=========================================                             |  59%
+  |                                                                            
+  |==========================================                            |  59%
+  |                                                                            
+  |==========================================                            |  60%
+  |                                                                            
+  |==========================================                            |  61%
+  |                                                                            
+  |===========================================                           |  61%
+  |                                                                            
+  |===========================================                           |  62%
+  |                                                                            
+  |============================================                          |  62%
+  |                                                                            
+  |============================================                          |  63%
+  |                                                                            
+  |=============================================                         |  64%
+  |                                                                            
+  |=============================================                         |  65%
+  |                                                                            
+  |==============================================                        |  65%
+  |                                                                            
+  |==============================================                        |  66%
+  |                                                                            
+  |===============================================                       |  66%
+  |                                                                            
+  |===============================================                       |  67%
+  |                                                                            
+  |===============================================                       |  68%
+  |                                                                            
+  |================================================                      |  68%
+  |                                                                            
+  |================================================                      |  69%
+  |                                                                            
+  |=================================================                     |  69%
+  |                                                                            
+  |=================================================                     |  70%
+  |                                                                            
+  |=================================================                     |  71%
+  |                                                                            
+  |==================================================                    |  71%
+  |                                                                            
+  |==================================================                    |  72%
+  |                                                                            
+  |===================================================                   |  73%
+  |                                                                            
+  |===================================================                   |  74%
+  |                                                                            
+  |====================================================                  |  74%
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |=====================================================                 |  75%
+  |                                                                            
+  |=====================================================                 |  76%
+  |                                                                            
+  |======================================================                |  76%
+  |                                                                            
+  |======================================================                |  77%
+  |                                                                            
+  |======================================================                |  78%
+  |                                                                            
+  |=======================================================               |  78%
+  |                                                                            
+  |=======================================================               |  79%
+  |                                                                            
+  |========================================================              |  79%
+  |                                                                            
+  |========================================================              |  80%
+  |                                                                            
+  |========================================================              |  81%
+  |                                                                            
+  |=========================================================             |  81%
+  |                                                                            
+  |=========================================================             |  82%
+  |                                                                            
+  |==========================================================            |  82%
+  |                                                                            
+  |==========================================================            |  83%
+  |                                                                            
+  |==========================================================            |  84%
+  |                                                                            
+  |===========================================================           |  84%
+  |                                                                            
+  |===========================================================           |  85%
+  |                                                                            
+  |============================================================          |  85%
+  |                                                                            
+  |============================================================          |  86%
+  |                                                                            
+  |=============================================================         |  87%
+  |                                                                            
+  |=============================================================         |  88%
+  |                                                                            
+  |==============================================================        |  88%
+  |                                                                            
+  |==============================================================        |  89%
+  |                                                                            
+  |===============================================================       |  89%
+  |                                                                            
+  |===============================================================       |  90%
+  |                                                                            
+  |===============================================================       |  91%
+  |                                                                            
+  |================================================================      |  91%
+  |                                                                            
+  |================================================================      |  92%
+  |                                                                            
+  |=================================================================     |  92%
+  |                                                                            
+  |=================================================================     |  93%
+  |                                                                            
+  |==================================================================    |  94%
+  |                                                                            
+  |==================================================================    |  95%
+  |                                                                            
+  |===================================================================   |  95%
+  |                                                                            
+  |===================================================================   |  96%
+  |                                                                            
+  |====================================================================  |  96%
+  |                                                                            
+  |====================================================================  |  97%
+  |                                                                            
+  |====================================================================  |  98%
+  |                                                                            
+  |===================================================================== |  98%
+  |                                                                            
+  |===================================================================== |  99%
+  |                                                                            
+  |======================================================================|  99%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |===                                                                   |   4%
+  |                                                                            
+  |=====                                                                 |   7%
+  |                                                                            
+  |=======                                                               |  10%
+  |                                                                            
+  |=========                                                             |  13%
+  |                                                                            
+  |==============                                                        |  19%
+  |                                                                            
+  |===================                                                   |  27%
+  |                                                                            
+  |====================                                                  |  29%
+  |                                                                            
+  |=======================                                               |  33%
+  |                                                                            
+  |===========================                                           |  39%
+  |                                                                            
+  |=============================                                         |  42%
+  |                                                                            
+  |================================                                      |  46%
+  |                                                                            
+  |=======================================                               |  56%
+  |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
+  |=============================================                         |  64%
+  |                                                                            
+  |===============================================                       |  67%
+  |                                                                            
+  |==================================================                    |  71%
+  |                                                                            
+  |=====================================================                 |  75%
+  |                                                                            
+  |=======================================================               |  79%
+  |                                                                            
+  |=============================================================         |  87%
+  |                                                                            
+  |===============================================================       |  91%
+  |                                                                            
+  |==================================================================    |  94%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="leaflet html-widget html-fill-item html-fill-container" id="htmlwidget-119b5a8d405a1fddd243" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-119b5a8d405a1fddd243">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addPolygons","args":[[[[{"lng":[-78.9043716648512,-78.90264327633641,-78.9025605763307,-78.90188000000001,-78.898349,-78.89779299999999,-78.896252,-78.89317699999999,-78.892421,-78.883529,-78.882656,-78.881472,-78.880027,-78.881624,-78.878775,-78.87831,-78.877917,-78.876364,-78.875714,-78.87727099999999,-78.876684,-78.87547499999999,-78.87540199999999,-78.875001,-78.87392800000001,-78.87302,-78.874911,-78.874914,-78.876205,-78.87678099999999,-78.87713599999999,-78.877135,-78.87852100000001,-78.881872,-78.882564,-78.883477,-78.88495,-78.88545000000001,-78.88690800000001,-78.887529,-78.88865199999999,-78.889279,-78.89051000000001,-78.891238,-78.89179000000001,-78.891527,-78.89228,-78.89253100000001,-78.893648,-78.892208,-78.89328399999999,-78.89439400000001,-78.89588000000001,-78.898836,-78.90026899999999,-78.90042200000001,-78.901687,-78.90282000000001,-78.90346099999999,-78.90316900000001,-78.9043716648512],"lat":[42.89761369558811,42.8958782353034,42.89579519692741,42.896473,42.898182,42.898461,42.896871,42.893782,42.893023,42.884123,42.884597,42.888153,42.888371,42.890074,42.88958000000001,42.891021,42.89222599999999,42.891954,42.893949,42.894231,42.89609900000001,42.896831,42.89683,42.899433,42.899428,42.902227,42.902239,42.903504,42.903514,42.902259,42.902263,42.90302500000001,42.903337,42.903277,42.903344,42.90286500000001,42.90266200000001,42.903192,42.902983,42.90364300000001,42.90307900000001,42.903744,42.903289,42.904061,42.903782,42.90348,42.903153,42.903409,42.902847,42.901285,42.90072,42.900166,42.901703,42.904824,42.90642900000001,42.906505,42.906388,42.90654199999999,42.901942,42.89935,42.89761369558811]}]],[[{"lng":[-78.853132,-78.850328,-78.85090700000001,-78.85126,-78.852024,-78.852197,-78.853132],"lat":[42.958626,42.958584,42.95859300000001,42.958599,42.958611,42.958613,42.958626]}],[{"lng":[-78.83941799999999,-78.83828699999999,-78.839343,-78.83941799999999],"lat":[42.958428,42.958412,42.95842699999999,42.958428]}],[{"lng":[-78.831917,-78.83063900000001,-78.829255,-78.829296,-78.829925,-78.830217,-78.83137000000001,-78.831917],"lat":[42.958285,42.957521,42.957697,42.958228,42.958241,42.958248,42.95827400000001,42.958285]}],[{"lng":[-78.825901,-78.82591600000001,-78.825464,-78.825446,-78.825568,-78.825901],"lat":[42.958162,42.95775,42.95774,42.958154,42.958157,42.958162]}],[{"lng":[-78.825446,-78.82493568420935,-78.825002,-78.82503699999999,-78.825446],"lat":[42.958154,42.95814510527432,42.958147,42.958147,42.958154]}]],[[{"lng":[-78.90282000000001,-78.901687,-78.90042200000001,-78.90026899999999,-78.898836,-78.89588000000001,-78.89439400000001,-78.89328399999999,-78.892208,-78.893648,-78.89253100000001,-78.89228,-78.891527,-78.89179000000001,-78.891238,-78.89051000000001,-78.889279,-78.88865199999999,-78.887529,-78.88690800000001,-78.88545000000001,-78.88495,-78.883477,-78.882564,-78.881872,-78.881902,-78.882491,-78.881923,-78.88194799999999,-78.882464,-78.882372,-78.88258399999999,-78.882024,-78.88202699999999,-78.882035,-78.882648,-78.88281000000001,-78.882481,-78.883121,-78.88260099999999,-78.88309599999999,-78.882644,-78.881811,-78.881766,-78.88104300000001,-78.881343,-78.881591,-78.881417,-78.881164,-78.88091799999999,-78.881424,-78.88167300000001,-78.881344,-78.88096000000002,-78.87703399999999,-78.876988,-78.88620100000001,-78.88882099999999,-78.888423,-78.88875,-78.88878699999999,-78.89234999999999,-78.895438,-78.896553,-78.897583,-78.897803,-78.898708,-78.89891900000001,-78.899964,-78.90054600000001,-78.900094,-78.901526,-78.902111,-78.902736,-78.902648,-78.90281,-78.90282000000001],"lat":[42.90654199999999,42.906388,42.906505,42.90642900000001,42.904824,42.901703,42.900166,42.90072,42.901285,42.902847,42.903409,42.903153,42.90348,42.903782,42.904061,42.903289,42.903744,42.90307900000001,42.90364300000001,42.902983,42.903192,42.90266200000001,42.90286500000001,42.903344,42.903277,42.90476900000001,42.905426,42.90543400000001,42.906473,42.907045,42.908566,42.910518,42.911084,42.911315,42.911605,42.911599,42.913046,42.91321300000001,42.91522399999999,42.91548900000001,42.915475,42.919284,42.919331,42.919829,42.920306,42.920602,42.920733,42.92215800000001,42.924139,42.926003,42.925996,42.92726700000001,42.927867,42.927861,42.927949,42.931984,42.931884,42.932258,42.935939,42.93652600000001,42.93657400000001,42.933982,42.93004100000001,42.928703,42.92808,42.927976,42.927982,42.924293,42.920812,42.91893499999999,42.920759,42.920792,42.919854,42.91808,42.912827,42.912211,42.90654199999999]}]],[[{"lng":[-78.801059,-78.801697,-78.80107700000001,-78.801062,-78.801059],"lat":[42.832423,42.831984,42.831982,42.832369,42.832423]}],[{"lng":[-78.79667786845945,-78.798269,-78.802851,-78.80364400000001,-78.80509000000001,-78.806124,-78.807057,-78.809163,-78.81155099999999,-78.811813,-78.81393199999999,-78.81554800000001,-78.816344,-78.817133,-78.82150900000001,-78.82238200000002,-78.825183,-78.827225,-78.830429,-78.83309199999999,-78.837828,-78.840953,-78.842288,-78.844431,-78.845298,-78.846772,-78.84800799999999,-78.848164,-78.84878399999999,-78.85028200000002,-78.850651,-78.84390399999999,-78.84197500000001,-78.84001000000001,-78.832441,-78.825141,-78.82391,-78.8201197007923,-78.819732,-78.81870100000002,-78.817746,-78.81566599999999,-78.815297,-78.815113,-78.812546,-78.809164,-78.808606,-78.808499,-78.80736,-78.80666564541916,-78.805621,-78.80396,-78.803929,-78.801059,-78.80105399999999,-78.801046,-78.801019,-78.80100299999999,-78.80097499999999,-78.800973,-78.800935,-78.80091899999999,-78.800906,-78.8009,-78.800883,-78.800859,-78.80085,-78.800848,-78.80083399999999,-78.800816,-78.800816,-78.80080700000001,-78.800791,-78.800617,-78.80041900000001,-78.80014,-78.800196,-78.799662,-78.798506,-78.797275,-78.796881,-78.79665900000001,-78.795157,-78.79524732942721,-78.795501,-78.795897,-78.796074,-78.79615200000001,-78.79648299999999,-78.796665,-78.79667786845945],"lat":[42.84198891457714,42.843305,42.843318,42.843453,42.845185,42.84588000000001,42.84653899999999,42.85087500000001,42.852897,42.853111,42.85478899999999,42.85605699999999,42.85660799999999,42.85701000000001,42.859232,42.859491,42.860386,42.86105500000001,42.85979,42.860527,42.86255800000001,42.863333,42.862723,42.86148399999999,42.861588,42.86234499999999,42.86050099999999,42.860301,42.859464,42.857381,42.856939,42.84400299999999,42.84518600000001,42.841456,42.836727,42.832066,42.832042,42.83202872582532,42.83202800000001,42.832026,42.832022,42.832013,42.832012,42.83201099999999,42.832004,42.832007,42.832008,42.832009,42.832013,42.83199760825944,42.831992,42.831986,42.832487,42.832423,42.832537,42.832795,42.83354700000001,42.834023,42.834472,42.834501,42.835057,42.835507,42.836476,42.836943,42.837301,42.838095,42.838404,42.83849,42.838953,42.839571,42.839599,42.841087,42.84154400000001,42.841286,42.84125700000001,42.84122800000001,42.839268,42.839123,42.83883300000001,42.838528,42.838425,42.838372,42.841135,42.84116039022344,42.841219,42.84134300000001,42.84141399999999,42.841445,42.84168400000001,42.84194099999999,42.84198891457714]}]],[[{"lng":[-78.801697,-78.801059,-78.803929,-78.80396,-78.803414,-78.802384,-78.801697],"lat":[42.831984,42.832423,42.832487,42.831986,42.83198500000001,42.83198500000001,42.831984]}],[{"lng":[-78.805621,-78.80666564541916,-78.80654800000001,-78.805621],"lat":[42.831992,42.83199760825944,42.831995,42.831992]}],[{"lng":[-78.809164,-78.812546,-78.809658,-78.809164],"lat":[42.832007,42.832004,42.832005,42.832007]}],[{"lng":[-78.812546,-78.815113,-78.81486,-78.8137,-78.812546],"lat":[42.832004,42.83201099999999,42.83201,42.832004,42.832004]}],[{"lng":[-78.8201197007923,-78.82391,-78.820802,-78.8201197007923],"lat":[42.83202872582532,42.832042,42.83203,42.83202872582532]}],[{"lng":[-78.825141,-78.832441,-78.84001000000001,-78.84197500000001,-78.84390399999999,-78.844688,-78.84739999999999,-78.849396,-78.847607,-78.84606700000001,-78.84528299999999,-78.85297300000001,-78.852546,-78.852519,-78.85011000000002,-78.84827,-78.84739500000001,-78.84714700000001,-78.846958,-78.844598,-78.84056099999999,-78.84012199999999,-78.83968400000001,-78.838953,-78.83882800000001,-78.838114,-78.838089,-78.837596,-78.837058,-78.836646,-78.836337,-78.83574,-78.83549499999999,-78.83531000000001,-78.835126,-78.834597,-78.834425,-78.834328,-78.83413400000001,-78.83375599999999,-78.833029,-78.832887,-78.83041,-78.829649,-78.827877,-78.82724400000001,-78.823999,-78.823992,-78.82397899999999,-78.82396,-78.82394200000002,-78.823938,-78.823931,-78.823933,-78.825141],"lat":[42.832066,42.836727,42.841456,42.84518600000001,42.84400299999999,42.84354500000001,42.84196600000001,42.841319,42.837758,42.836811,42.835247,42.833337,42.832237,42.832237,42.832191,42.83224700000001,42.832273,42.832267,42.832264,42.832214,42.831972,42.831972,42.831973,42.831959,42.831961,42.831961,42.831961,42.83195500000001,42.831893,42.831859,42.83125,42.830014,42.82947800000001,42.829046,42.828581,42.827101,42.826508,42.826152,42.82613300000001,42.826095,42.826023,42.826767,42.82683000000001,42.82688699999999,42.826891,42.82687500000001,42.826879,42.82731500000001,42.828116,42.829291,42.83046,42.830743,42.831226,42.83129400000001,42.832066]}],[{"lng":[-78.86611005360825,-78.866508,-78.868403,-78.86870104657082,-78.86611005360825],"lat":[42.83228597701427,42.832633,42.83291200000001,42.83229779893855,42.83228597701427]}]],[[{"lng":[-78.822373,-78.819739,-78.82093399999999,-78.820967,-78.822373],"lat":[42.95809,42.95802700000001,42.95805800000001,42.95805800000001,42.95809]}],[{"lng":[-78.819739,-78.818881,-78.81922900000001,-78.819739],"lat":[42.95802700000001,42.957406,42.958013,42.95802700000001]}],[{"lng":[-78.818881,-78.81393109633471,-78.81428200000001,-78.81494000000001,-78.81579000000001,-78.815977,-78.816287,-78.81767499999999,-78.818428,-78.81850900000001,-78.818693,-78.818881],"lat":[42.957406,42.95943159124396,42.959294,42.959037,42.95870500000001,42.958634,42.95851300000001,42.95797099999999,42.957676,42.95764399999999,42.957572,42.957406]}],[{"lng":[-78.813869,-78.808942,-78.809012,-78.81114599999999,-78.81212600000001,-78.812652,-78.813187,-78.813869],"lat":[42.959457,42.96141599999999,42.96139,42.96054,42.96015299999999,42.95994499999999,42.95973,42.959457]}],[{"lng":[-78.80883,-78.807734,-78.807795,-78.80883],"lat":[42.959028,42.957638,42.958932,42.959028]}],[{"lng":[-78.807683,-78.80387500000001,-78.804332,-78.807683],"lat":[42.95654300000001,42.95641,42.956599,42.95654300000001]}],[{"lng":[-78.810356,-78.811493,-78.81141100000001,-78.811313,-78.811222,-78.81106,-78.810931,-78.81079800000001,-78.81085,-78.81081500000002,-78.810761,-78.81068800000001,-78.810597,-78.81049,-78.81041399999999,-78.810356],"lat":[42.95215699999999,42.949459,42.949478,42.949515,42.949561,42.949667,42.949769,42.949869,42.950942,42.951051,42.951156,42.951254,42.951344,42.951424,42.95146,42.95215699999999]}],[{"lng":[-78.811493,-78.803409,-78.803449,-78.811493],"lat":[42.949459,42.94938,42.949389,42.949459]}]],[[{"lng":[-78.800161,-78.80007999999999,-78.802171,-78.803144,-78.807,-78.809528,-78.810345,-78.818181,-78.821322,-78.82161600000001,-78.821972,-78.832379,-78.833825,-78.837788,-78.83863500000001,-78.838396,-78.83838,-78.839223,-78.839223,-78.84407,-78.844059,-78.845668,-78.84894799999999,-78.84990999999999,-78.852898,-78.85391799999999,-78.853911,-78.854337,-78.854933,-78.85629299999999,-78.856881,-78.85561199999999,-78.855558,-78.855103,-78.857495,-78.857544,-78.85805499999999,-78.85821700000001,-78.858375,-78.858058,-78.859482,-78.859589,-78.859431,-78.85766,-78.859427,-78.854658,-78.857018,-78.856487,-78.853792,-78.853313,-78.85068,-78.84878399999999,-78.848164,-78.84800799999999,-78.846772,-78.845298,-78.844431,-78.842288,-78.840953,-78.837828,-78.83309199999999,-78.830429,-78.827225,-78.825183,-78.82238200000002,-78.82150900000001,-78.817133,-78.816344,-78.81554800000001,-78.81393199999999,-78.811813,-78.81155099999999,-78.809163,-78.807057,-78.806124,-78.80509000000001,-78.80364400000001,-78.802851,-78.798269,-78.796904,-78.79825300000002,-78.798608,-78.799082,-78.799229,-78.80064900000001,-78.800623,-78.800583,-78.800583,-78.80056,-78.800524,-78.80050500000002,-78.800467,-78.800432,-78.80042400000001,-78.800372,-78.800326,-78.800302,-78.80024500000002,-78.800161],"lat":[42.86152,42.864844,42.86497,42.86496300000001,42.86468900000001,42.86430500000001,42.86372,42.867749,42.868991,42.869105,42.869243,42.873258,42.873815,42.875285,42.874679,42.875478,42.879127,42.879293,42.879749,42.88059199999999,42.881335,42.880415,42.881429,42.88114999999999,42.881661,42.881845,42.880642,42.87899300000001,42.876941,42.877179,42.875353,42.874164,42.87392700000001,42.872997,42.873416,42.873261,42.87165099999999,42.871154,42.870668,42.870151,42.867221,42.86685799999999,42.86565,42.865729,42.855819,42.857059,42.861155,42.862795,42.863252,42.862327,42.862101,42.859464,42.860301,42.86050099999999,42.86234499999999,42.861588,42.86148399999999,42.862723,42.863333,42.86255800000001,42.860527,42.85979,42.86105500000001,42.860386,42.859491,42.859232,42.85701000000001,42.85660799999999,42.85605699999999,42.85478899999999,42.853111,42.852897,42.85087500000001,42.84653899999999,42.84588000000001,42.845185,42.843453,42.843318,42.843305,42.845522,42.846017,42.846147,42.846321,42.846375,42.845434,42.845993,42.847099,42.847532,42.848165,42.849574,42.850158,42.851126,42.85210499999999,42.852428,42.853639,42.854562,42.855677,42.858477,42.86152]}]],[[{"lng":[-78.799008,-78.79900000000001,-78.79900000000001,-78.79900000000001,-78.799001,-78.799002,-78.79900499999999,-78.799008],"lat":[42.93509600000001,42.933231,42.933342,42.933496,42.933692,42.933792,42.93441200000001,42.93509600000001]}],[{"lng":[-78.79899899999999,-78.79899103308408,-78.798993,-78.798996,-78.79899899999999],"lat":[42.93309199999999,42.93176533842272,42.93245900000001,42.932753,42.93309199999999]}],[{"lng":[-78.79915800000002,-78.79962999999999,-78.799147,-78.79916299999999,-78.799165,-78.79915800000002],"lat":[42.92233599999999,42.919007,42.919003,42.921677,42.922111,42.92233599999999]}]],[[{"lng":[-78.79931500000001,-78.80230400000001,-78.803481,-78.804796,-78.804793,-78.805762,-78.80596799999999,-78.81407799999999,-78.814083,-78.81672399999999,-78.822878,-78.82558899999999,-78.831382,-78.83576100000001,-78.83577200000001,-78.839236,-78.83733700000001,-78.835161,-78.837082,-78.840099,-78.842035,-78.843999,-78.844031,-78.84692,-78.846952,-78.849936,-78.85339399999999,-78.853951,-78.85394700000001,-78.85394599999999,-78.85391799999999,-78.852898,-78.84990999999999,-78.84894799999999,-78.845668,-78.844059,-78.84407,-78.839223,-78.839223,-78.83838,-78.838396,-78.83863500000001,-78.837788,-78.833825,-78.832379,-78.821972,-78.82161600000001,-78.821322,-78.818181,-78.810345,-78.809528,-78.807,-78.803144,-78.802171,-78.80007999999999,-78.800145,-78.800122,-78.79960200000001,-78.799595,-78.79956900000001,-78.79955500000001,-78.799921,-78.799904,-78.799864,-78.799817,-78.799753,-78.799755,-78.799757,-78.79975399999999,-78.79966400000001,-78.799663,-78.799654,-78.799623,-78.799561,-78.79956300000001,-78.79955200000001,-78.799549,-78.799519,-78.799454,-78.79946200000001,-78.79954600000001,-78.79955500000001,-78.79947300000001,-78.79935500000001,-78.799359,-78.79931500000001],"lat":[42.895575,42.89558,42.897788,42.897488,42.897607,42.897727,42.897638,42.894398,42.894156,42.89303,42.890363,42.888613,42.88615,42.885035,42.88496099999999,42.885009,42.885778,42.887848,42.88784200000001,42.887863,42.88785,42.887845,42.88784499999999,42.887837,42.887837,42.887823,42.887817,42.885772,42.885169,42.885094,42.881845,42.881661,42.88114999999999,42.881429,42.880415,42.881335,42.88059199999999,42.879749,42.879293,42.879127,42.875478,42.874679,42.875285,42.873815,42.873258,42.869243,42.869105,42.868991,42.867749,42.86372,42.86430500000001,42.86468900000001,42.86496300000001,42.86497,42.864844,42.865986,42.867135,42.86731300000001,42.86862,42.870072,42.871212,42.87122999999999,42.871731,42.87357,42.874712,42.875859,42.876179,42.876333,42.877158,42.87766000000001,42.877712,42.88075899999999,42.881164,42.882154,42.882294,42.884556,42.88458200000001,42.88473399999999,42.885059,42.885105,42.885694,42.885758,42.88727100000001,42.889778,42.89103600000001,42.895575]}]],[[{"lng":[-78.874911,-78.87302,-78.868971,-78.86550800000001,-78.862613,-78.86252,-78.861549,-78.86148799999999,-78.859741,-78.859678,-78.859627,-78.859618,-78.859618,-78.859556,-78.85944600000001,-78.859059,-78.859533,-78.859487,-78.859019,-78.858879,-78.859414,-78.859405,-78.858835,-78.85801499999999,-78.858924,-78.867329,-78.86733099999999,-78.867442,-78.867504,-78.867628,-78.867571,-78.868239,-78.87106799999999,-78.87374800000001,-78.873729,-78.873743,-78.872652,-78.87200199999999,-78.870627,-78.869811,-78.86978999999999,-78.86770800000001,-78.867424,-78.86787099999999,-78.868847,-78.86917099999999,-78.869044,-78.86979700000001,-78.869281,-78.869456,-78.869394,-78.868706,-78.869173,-78.870121,-78.87076999999999,-78.87078100000001,-78.86982500000001,-78.870013,-78.87214899999999,-78.87173199999999,-78.87032499999999,-78.870771,-78.87214299999999,-78.871922,-78.87384299999999,-78.873428,-78.87210899999999,-78.872297,-78.873751,-78.874914,-78.874911],"lat":[42.902239,42.902227,42.90221,42.902243,42.902164,42.902163,42.902157,42.903933,42.903909,42.906649,42.909443,42.91015000000001,42.910174,42.912417,42.91241599999999,42.91284899999999,42.913901,42.915286,42.915632,42.919438,42.919448,42.920204,42.920752,42.921526,42.922217,42.922272,42.922299,42.923534,42.92429,42.925948,42.928123,42.928794,42.929947,42.930023,42.925992,42.925693,42.924243,42.92424900000001,42.922975,42.92228399999999,42.92226700000001,42.92083400000001,42.920591,42.92028,42.92054000000001,42.919462,42.91946200000001,42.918628,42.91818300000001,42.91821099999999,42.917262,42.91716000000001,42.915394,42.91540000000001,42.914082,42.913141,42.913136,42.912456,42.912483,42.91127100000001,42.911261,42.909845,42.90949100000001,42.908878,42.90754,42.905522,42.90530799999999,42.904668,42.904685,42.903504,42.902239]}]],[[{"lng":[-78.852546,-78.85297300000001,-78.84528299999999,-78.84606700000001,-78.847607,-78.849396,-78.84739999999999,-78.844688,-78.84390399999999,-78.850651,-78.85028200000002,-78.84878399999999,-78.85068,-78.853313,-78.853792,-78.856487,-78.857018,-78.854658,-78.859427,-78.860811,-78.861304,-78.85992299999999,-78.86411699999999,-78.867401,-78.868452,-78.86863099999999,-78.871157,-78.872812,-78.87206399999999,-78.87176700000001,-78.870544,-78.87012900000001,-78.868392,-78.86989699999999,-78.86913199999999,-78.86853600000001,-78.867284,-78.86425800000001,-78.86388800000002,-78.868241,-78.867965,-78.867784,-78.867439,-78.86669999999999,-78.86594700000001,-78.865572,-78.86311000000001,-78.863838,-78.86314900000002,-78.864183,-78.863011,-78.862712,-78.86252,-78.862613,-78.86550800000001,-78.868971,-78.86929000000001,-78.870752,-78.871292,-78.87188999999999,-78.872968,-78.87344400000001,-78.874263,-78.87523400000001,-78.87561700000001,-78.876704,-78.87750699999999,-78.87752999999999,-78.87804300000001,-78.87830700000001,-78.87839700000002,-78.88219100000001,-78.88699099999999,-78.8887141622712,-78.890108,-78.88255700000002,-78.87203100000001,-78.865813,-78.857922,-78.860804,-78.8600238296229,-78.85992893806346,-78.85729499999999,-78.853768,-78.853129,-78.852957,-78.852546],"lat":[42.832237,42.833337,42.835247,42.836811,42.837758,42.841319,42.84196600000001,42.84354500000001,42.84400299999999,42.856939,42.857381,42.859464,42.862101,42.862327,42.863252,42.862795,42.861155,42.857059,42.855819,42.856363,42.860627,42.863974,42.863708,42.86217600000001,42.862874,42.865271,42.870158,42.871591,42.87210099999999,42.873006,42.876802,42.878102,42.877787,42.878807,42.88158299999999,42.88148,42.88298100000001,42.882454,42.883594,42.884345,42.885148,42.885713,42.886838,42.888998,42.891293,42.892458,42.893774,42.894001,42.896732,42.896744,42.90029100000001,42.901234,42.902163,42.902164,42.902243,42.90221,42.901288,42.896774,42.895133,42.893315,42.890087,42.888631,42.886061,42.883042,42.881854,42.878529,42.876077,42.876002,42.87580799999999,42.874406,42.874469,42.877482,42.878005,42.8780479767312,42.876669,42.867258,42.852113,42.852882,42.838781,42.837444,42.83282357349451,42.83226159435628,42.832258,42.832249,42.832247,42.83224500000001,42.832237]}]],[[{"lng":[-78.91245000000001,-78.912392,-78.91243299999999,-78.91245000000001],"lat":[42.956248,42.956368,42.956343,42.956248]}]],[[{"lng":[-78.9025605763307,-78.9009953407429,-78.891655,-78.8913697999223,-78.8912768231429,-78.88893905341089,-78.887857,-78.8887141622712,-78.88699099999999,-78.88219100000001,-78.87839700000002,-78.87830700000001,-78.87804300000001,-78.87752999999999,-78.87750699999999,-78.876704,-78.87561700000001,-78.87523400000001,-78.874263,-78.87344400000001,-78.872968,-78.87188999999999,-78.871292,-78.870752,-78.86929000000001,-78.868971,-78.87302,-78.87392800000001,-78.875001,-78.87540199999999,-78.87547499999999,-78.876684,-78.87727099999999,-78.875714,-78.876364,-78.877917,-78.87831,-78.878775,-78.881624,-78.880027,-78.881472,-78.882656,-78.883529,-78.892421,-78.89317699999999,-78.896252,-78.89779299999999,-78.898349,-78.90188000000001,-78.9025605763307],"lat":[42.89579519692741,42.8942235571163,42.88484500000001,42.8843982766556,42.884252642411,42.88059087512951,42.878896,42.8780479767312,42.878005,42.877482,42.874469,42.874406,42.87580799999999,42.876002,42.876077,42.878529,42.881854,42.883042,42.886061,42.888631,42.890087,42.893315,42.895133,42.896774,42.901288,42.90221,42.902227,42.899428,42.899433,42.89683,42.896831,42.89609900000001,42.894231,42.893949,42.891954,42.89222599999999,42.891021,42.88958000000001,42.890074,42.888371,42.888153,42.884597,42.884123,42.893023,42.893782,42.896871,42.898461,42.898182,42.896473,42.89579519692741]}]],[[{"lng":[-78.872812,-78.871157,-78.86863099999999,-78.868452,-78.867401,-78.86411699999999,-78.85992299999999,-78.861304,-78.860811,-78.859427,-78.85766,-78.859431,-78.859589,-78.859482,-78.858058,-78.858375,-78.85821700000001,-78.85805499999999,-78.857544,-78.857495,-78.855103,-78.855558,-78.85561199999999,-78.856881,-78.85629299999999,-78.854933,-78.854337,-78.853911,-78.85391799999999,-78.85394599999999,-78.85394700000001,-78.853951,-78.85339399999999,-78.853967,-78.85396799999999,-78.85338299999999,-78.853486,-78.853442,-78.853966,-78.853953,-78.853956,-78.85396,-78.851641,-78.853962,-78.853977,-78.85271899999999,-78.852752,-78.85397399999999,-78.856208,-78.859741,-78.86148799999999,-78.861549,-78.86252,-78.862712,-78.863011,-78.864183,-78.86314900000002,-78.863838,-78.86311000000001,-78.865572,-78.86594700000001,-78.86669999999999,-78.867439,-78.867784,-78.867965,-78.868241,-78.86388800000002,-78.86425800000001,-78.867284,-78.86853600000001,-78.86913199999999,-78.86989699999999,-78.868392,-78.87012900000001,-78.870544,-78.87176700000001,-78.87206399999999,-78.872812],"lat":[42.871591,42.870158,42.865271,42.862874,42.86217600000001,42.863708,42.863974,42.860627,42.856363,42.855819,42.865729,42.86565,42.86685799999999,42.867221,42.870151,42.870668,42.871154,42.87165099999999,42.873261,42.873416,42.872997,42.87392700000001,42.874164,42.875353,42.877179,42.876941,42.87899300000001,42.880642,42.881845,42.885094,42.885169,42.885772,42.887817,42.88936700000001,42.889787,42.889913,42.893154,42.89529199999999,42.895132,42.89616999999999,42.89659,42.897488,42.898515,42.898392,42.900215,42.900198,42.90382,42.903838,42.90386600000001,42.903909,42.903933,42.902157,42.902163,42.901234,42.90029100000001,42.896744,42.896732,42.894001,42.893774,42.892458,42.891293,42.888998,42.886838,42.885713,42.885148,42.884345,42.883594,42.882454,42.88298100000001,42.88148,42.88158299999999,42.878807,42.877787,42.878102,42.876802,42.873006,42.87210099999999,42.871591]}]],[[{"lng":[-78.79919700000001,-78.799256,-78.799246,-78.79924200000001,-78.799238,-78.79923100000001,-78.79922500000001,-78.79921899999999,-78.79921400000001,-78.79920799999999,-78.799199,-78.79919700000001],"lat":[42.901341,42.89906700000001,42.899289,42.899467,42.899631,42.899944,42.900201,42.90042700000001,42.90060900000001,42.90088699999999,42.90125,42.901341]}],[{"lng":[-78.799147,-78.79962999999999,-78.80339600000001,-78.80397000000001,-78.805904,-78.807778,-78.807818,-78.808722,-78.808725,-78.81056,-78.812984,-78.813479,-78.81368999999999,-78.813688,-78.81492299999999,-78.813929,-78.81469199999999,-78.818383,-78.819329,-78.819317,-78.821523,-78.824286,-78.824412,-78.82640000000001,-78.8265,-78.829089,-78.82942,-78.83245100000001,-78.83054300000001,-78.830421,-78.83163500000001,-78.831659,-78.832657,-78.833623,-78.833628,-78.834126,-78.839367,-78.83937299999999,-78.839348,-78.84113499999999,-78.84107899999999,-78.843486,-78.84352199999999,-78.843507,-78.843498,-78.843474,-78.843467,-78.84348,-78.843484,-78.843987,-78.845951,-78.848073,-78.849152,-78.852752,-78.85271899999999,-78.853977,-78.853962,-78.851641,-78.85396,-78.853956,-78.853953,-78.853966,-78.853442,-78.853486,-78.85193400000001,-78.84706,-78.84580800000001,-78.84236199999999,-78.84119000000001,-78.84004899999999,-78.839292,-78.838652,-78.83865900000001,-78.83662,-78.836619,-78.834509,-78.82993399999999,-78.82994600000001,-78.82890399999999,-78.82888,-78.82886499999999,-78.827907,-78.82550000000002,-78.82274200000001,-78.81811399999999,-78.813866,-78.811609,-78.80571,-78.80519100000001,-78.804191,-78.79919700000001,-78.79919099999999,-78.799183,-78.79917399999999,-78.799164,-78.799156,-78.799156,-78.799155,-78.799155,-78.799159,-78.799059,-78.799054,-78.799155,-78.79905100000001,-78.799052,-78.79914599999999,-78.799147],"lat":[42.919003,42.919007,42.91905,42.91906600000001,42.91908,42.919101,42.919102,42.919114,42.918628,42.918635,42.918238,42.918639,42.918638,42.918886,42.918887,42.917145,42.91696,42.917027,42.917044,42.915048,42.914559,42.91447700000001,42.914474,42.91448,42.914482,42.914509,42.914514,42.9168,42.917294,42.918907,42.91893000000001,42.921483,42.921872,42.921791,42.92213499999999,42.92234500000001,42.922235,42.921857,42.921088,42.921115,42.92188000000001,42.921935,42.920478,42.91915400000001,42.91693399999999,42.91467699999999,42.912253,42.910995,42.909328,42.907336,42.903735,42.903758,42.903775,42.90382,42.900198,42.900215,42.898392,42.898515,42.897488,42.89659,42.89616999999999,42.895132,42.89529199999999,42.893154,42.893654,42.895178,42.895572,42.896657,42.897025,42.897393,42.897632,42.897834,42.898366,42.89884,42.89847900000001,42.899142,42.900586,42.903535,42.903524,42.900915,42.899362,42.89840000000001,42.898654,42.899837,42.900518,42.90108800000001,42.901392,42.902187,42.90106299999999,42.901608,42.901341,42.901591,42.90193699999999,42.90228299999999,42.902694,42.903044,42.903525,42.905041,42.905436,42.906829,42.909744,42.909862,42.911273,42.913617,42.916163,42.91848,42.919003]}]],[[{"lng":[-78.892533,-78.890608,-78.89235499999999,-78.892533],"lat":[42.961261,42.958567,42.96105899999999,42.961261]}],[{"lng":[-78.88924900000001,-78.88494836519267,-78.885233,-78.885805,-78.887106,-78.88916999999999,-78.88924900000001],"lat":[42.95857199999999,42.95859748151169,42.958597,42.95859299999999,42.958588,42.958575,42.95857199999999]}],[{"lng":[-78.87838499999999,-78.86962,-78.86976900000001,-78.870752,-78.87169900000001,-78.872643,-78.8736,-78.874549,-78.876009,-78.87637599999999,-78.876644,-78.87679900000001,-78.87838499999999],"lat":[42.958636,42.958685,42.958685,42.95868000000001,42.958675,42.95867,42.958665,42.95866,42.958652,42.958649,42.958647,42.958646,42.958636]}],[{"lng":[-78.86962,-78.869474,-78.86959400000001,-78.86962],"lat":[42.958685,42.958685,42.95871799999999,42.958685]}],[{"lng":[-78.869474,-78.861587,-78.86424000000001,-78.865336,-78.865821,-78.869474],"lat":[42.958685,42.95866900000001,42.958682,42.958686,42.958688,42.958685]}],[{"lng":[-78.858643,-78.85325899999999,-78.85359800000001,-78.854067,-78.854291,-78.855006,-78.85579199999999,-78.855942,-78.858643],"lat":[42.958653,42.958628,42.958633,42.958638,42.95863800000001,42.958641,42.95864300000001,42.95864400000001,42.958653]}]],[[{"lng":[-78.88882099999999,-78.88620100000001,-78.876988,-78.87703399999999,-78.88096000000002,-78.881344,-78.88167300000001,-78.881424,-78.88091799999999,-78.881164,-78.881417,-78.881591,-78.881343,-78.88104300000001,-78.881766,-78.881811,-78.882644,-78.88309599999999,-78.88260099999999,-78.883121,-78.882481,-78.88281000000001,-78.882648,-78.882035,-78.88202699999999,-78.882024,-78.88258399999999,-78.882372,-78.882464,-78.88194799999999,-78.881923,-78.882491,-78.881902,-78.881872,-78.87852100000001,-78.877135,-78.87713599999999,-78.87678099999999,-78.876205,-78.874914,-78.873751,-78.872297,-78.87210899999999,-78.873428,-78.87384299999999,-78.871922,-78.87214299999999,-78.870771,-78.87032499999999,-78.87173199999999,-78.87214899999999,-78.870013,-78.86982500000001,-78.87078100000001,-78.87076999999999,-78.870121,-78.869173,-78.868706,-78.869394,-78.869456,-78.869281,-78.86979700000001,-78.869044,-78.86917099999999,-78.868847,-78.86787099999999,-78.867424,-78.86770800000001,-78.86978999999999,-78.869811,-78.870627,-78.87200199999999,-78.872652,-78.873743,-78.873729,-78.87374800000001,-78.87106799999999,-78.868239,-78.867571,-78.86635200000001,-78.865877,-78.867323,-78.87086300000001,-78.873119,-78.874656,-78.87532800000001,-78.87745099999999,-78.87928100000001,-78.882366,-78.884974,-78.887748,-78.88875,-78.888423,-78.88882099999999],"lat":[42.932258,42.931884,42.931984,42.927949,42.927861,42.927867,42.92726700000001,42.925996,42.926003,42.924139,42.92215800000001,42.920733,42.920602,42.920306,42.919829,42.919331,42.919284,42.915475,42.91548900000001,42.91522399999999,42.91321300000001,42.913046,42.911599,42.911605,42.911315,42.911084,42.910518,42.908566,42.907045,42.906473,42.90543400000001,42.905426,42.90476900000001,42.903277,42.903337,42.90302500000001,42.902263,42.902259,42.903514,42.903504,42.904685,42.904668,42.90530799999999,42.905522,42.90754,42.908878,42.90949100000001,42.909845,42.911261,42.91127100000001,42.912483,42.912456,42.913136,42.913141,42.914082,42.91540000000001,42.915394,42.91716000000001,42.917262,42.91821099999999,42.91818300000001,42.918628,42.91946200000001,42.919462,42.92054000000001,42.92028,42.920591,42.92083400000001,42.92226700000001,42.92228399999999,42.922975,42.92424900000001,42.924243,42.925693,42.925992,42.930023,42.929947,42.928794,42.928123,42.92884600000001,42.929571,42.931414,42.932711,42.932636,42.933933,42.933913,42.93419599999999,42.93462000000001,42.936989,42.937314,42.937105,42.93652600000001,42.935939,42.932258]}]],[[{"lng":[-78.912392,-78.91245000000001,-78.909826,-78.90902,-78.90919100000001,-78.909113,-78.90748499999999,-78.90644,-78.90716399999999,-78.907774,-78.906761,-78.901932,-78.90215000000001,-78.89957800000001,-78.898708,-78.897803,-78.897583,-78.896553,-78.895438,-78.89234999999999,-78.88878699999999,-78.88875,-78.887748,-78.884974,-78.882366,-78.87928100000001,-78.87745099999999,-78.87808800000001,-78.87840799999999,-78.878593,-78.87860000000001,-78.878596,-78.87848200000001,-78.872846,-78.87294700000001,-78.87838000000001,-78.878212,-78.87825100000001,-78.878339,-78.88965399999999,-78.88958500000001,-78.889573,-78.88924900000001,-78.889287,-78.88949500000001,-78.890608,-78.892533,-78.89347100000001,-78.893517,-78.89355399999999,-78.893541,-78.89415700000001,-78.89483300000001,-78.895375,-78.896092,-78.896433,-78.896761,-78.897459,-78.89842100000001,-78.898754,-78.89960600000001,-78.90036800000001,-78.90132199999999,-78.901923,-78.902159,-78.902929,-78.903279,-78.90371399999999,-78.90393,-78.904494,-78.90467700000001,-78.905056,-78.905384,-78.90607199999999,-78.90654499999999,-78.906852,-78.906992,-78.90741800000001,-78.907811,-78.908642,-78.90868,-78.90879,-78.909761,-78.910989,-78.91195399999999,-78.912065,-78.91208,-78.91220300000001,-78.912392],"lat":[42.956368,42.956248,42.952421,42.944926,42.943125,42.939277,42.93975700000001,42.93773900000001,42.937262,42.936916,42.935154,42.931452,42.931316,42.928161,42.927982,42.927976,42.92808,42.928703,42.93004100000001,42.933982,42.93657400000001,42.93652600000001,42.937105,42.937314,42.936989,42.93462000000001,42.93419599999999,42.935246,42.936932,42.93792,42.939625,42.940564,42.941979,42.94196,42.944078,42.944069,42.94775700000001,42.951416,42.955973,42.95600000000001,42.95643699999999,42.956521,42.95857199999999,42.95857199999999,42.958569,42.958567,42.961261,42.96203899999999,42.96207999999999,42.96211300000001,42.96221500000001,42.96274699999999,42.963331,42.963799,42.964415,42.964715,42.96499000000001,42.965502,42.966216,42.96645500000001,42.965828,42.965265,42.964555,42.964106,42.963932,42.963362,42.963103,42.962786,42.962628,42.96221,42.962074,42.961801,42.96156,42.96105499999999,42.960699,42.960474,42.960372,42.960061,42.959771,42.959161,42.959133,42.959053,42.95834000000001,42.95743499999999,42.95673299999999,42.956646,42.95657,42.956487,42.956368]}]],[[{"lng":[-78.859741,-78.856208,-78.85397399999999,-78.852752,-78.849152,-78.848073,-78.845951,-78.843987,-78.843484,-78.84348,-78.843467,-78.843474,-78.843498,-78.843507,-78.84352199999999,-78.843486,-78.843766,-78.844016,-78.84508,-78.846102,-78.847458,-78.850926,-78.851505,-78.85185799999999,-78.853357,-78.853588,-78.854096,-78.855396,-78.85327100000002,-78.85397399999999,-78.857315,-78.858924,-78.85801499999999,-78.858835,-78.859405,-78.859414,-78.858879,-78.859019,-78.859487,-78.859533,-78.859059,-78.85944600000001,-78.859556,-78.859618,-78.859618,-78.859627,-78.859678,-78.859741],"lat":[42.903909,42.90386600000001,42.903838,42.90382,42.903775,42.903758,42.903735,42.907336,42.909328,42.910995,42.912253,42.91467699999999,42.91693399999999,42.91915400000001,42.920478,42.921935,42.921941,42.921945,42.923655,42.924661,42.925565,42.92764400000001,42.927655,42.927323,42.928188,42.92855399999999,42.928031,42.927187,42.926003,42.925353,42.922181,42.922217,42.921526,42.920752,42.920204,42.919448,42.919438,42.915632,42.915286,42.913901,42.91284899999999,42.91241599999999,42.912417,42.910174,42.91015000000001,42.909443,42.906649,42.903909]}]],[[{"lng":[-78.88494836519267,-78.88924900000001,-78.889573,-78.88958500000001,-78.88965399999999,-78.878339,-78.87825100000001,-78.878212,-78.87838000000001,-78.87294700000001,-78.872846,-78.87848200000001,-78.878596,-78.87860000000001,-78.878593,-78.87840799999999,-78.87808800000001,-78.87745099999999,-78.87532800000001,-78.874656,-78.873119,-78.87086300000001,-78.867323,-78.865877,-78.865313,-78.86608699999999,-78.86270399999999,-78.85883200000001,-78.85608999999999,-78.855535,-78.85074299999999,-78.850008,-78.849729,-78.850212,-78.849841,-78.849811,-78.84979199999999,-78.84689299999999,-78.84404800000002,-78.84404800000002,-78.843549,-78.840952,-78.840581,-78.840588,-78.838971,-78.83842300000001,-78.83830399999999,-78.838188,-78.83879899999999,-78.838815,-78.83644099999999,-78.83479,-78.83568200000001,-78.837037,-78.838262,-78.83828699999999,-78.83941799999999,-78.840434,-78.840632,-78.841525,-78.84245900000001,-78.842606,-78.843807,-78.84497500000001,-78.845005,-78.845964,-78.84611700000001,-78.846943,-78.847458,-78.84795000000001,-78.848615,-78.84978700000001,-78.850328,-78.853132,-78.85325899999999,-78.858643,-78.861587,-78.869474,-78.86962,-78.87838499999999,-78.878737,-78.879368,-78.880381,-78.8814,-78.88195399999999,-78.882357,-78.88258500000001,-78.882761,-78.883422,-78.88404800000001,-78.88494836519267],"lat":[42.95859748151169,42.95857199999999,42.956521,42.95643699999999,42.95600000000001,42.955973,42.951416,42.94775700000001,42.944069,42.944078,42.94196,42.941979,42.940564,42.939625,42.93792,42.936932,42.935246,42.93419599999999,42.933913,42.933933,42.932636,42.932711,42.931414,42.929571,42.93207,42.93413300000001,42.936989,42.939649,42.939518,42.93995,42.940355,42.94035,42.942721,42.942843,42.944118,42.945072,42.946381,42.94727400000001,42.94724999999999,42.947362,42.94724,42.947549,42.947545,42.94718400000001,42.94752,42.947872,42.950121,42.954325,42.95436299999999,42.955409,42.95514800000001,42.954508,42.95601700000001,42.958384,42.958411,42.958412,42.958428,42.95844100000001,42.95844400000001,42.958455,42.958468,42.958469,42.958488,42.958503,42.958503,42.958517,42.958519,42.958531,42.958539,42.958547,42.958556,42.958575,42.958584,42.958626,42.958628,42.958653,42.95866900000001,42.958685,42.958685,42.958636,42.958634,42.958629,42.95862300000001,42.958616,42.958612,42.958611,42.95861,42.95861,42.958604,42.958599,42.95859748151169]}]],[[{"lng":[-78.837037,-78.83568200000001,-78.83479,-78.83644099999999,-78.838815,-78.83879899999999,-78.838188,-78.83830399999999,-78.83842300000001,-78.838971,-78.840588,-78.840581,-78.840952,-78.843549,-78.84404800000002,-78.84404800000002,-78.84689299999999,-78.84979199999999,-78.849811,-78.849841,-78.850212,-78.849729,-78.850008,-78.85074299999999,-78.855535,-78.85608999999999,-78.85883200000001,-78.86270399999999,-78.86608699999999,-78.865313,-78.865877,-78.86635200000001,-78.867571,-78.867628,-78.867504,-78.867442,-78.86733099999999,-78.867329,-78.858924,-78.857315,-78.85397399999999,-78.85327100000002,-78.855396,-78.854096,-78.853588,-78.853357,-78.85185799999999,-78.851505,-78.850926,-78.847458,-78.846102,-78.84508,-78.844016,-78.843766,-78.843486,-78.84107899999999,-78.84113499999999,-78.839348,-78.83937299999999,-78.839367,-78.834126,-78.834138,-78.839356,-78.83932900000001,-78.83762299999999,-78.834204,-78.83419000000001,-78.831369,-78.829154,-78.829155,-78.829162,-78.829166,-78.83087,-78.830269,-78.83052000000001,-78.831057,-78.831058,-78.828217,-78.828199,-78.829939,-78.829926,-78.828164,-78.828121,-78.826404,-78.82490799999999,-78.825123,-78.823992,-78.823999,-78.821647,-78.821652,-78.82166100000001,-78.821668,-78.82167200000001,-78.821051,-78.818549,-78.81840099999999,-78.816199,-78.81375900000002,-78.813869,-78.813902,-78.81393109633471,-78.818881,-78.819739,-78.822373,-78.823806,-78.82384,-78.82489700000001,-78.82493568420935,-78.825446,-78.825464,-78.82591600000001,-78.825901,-78.82646099999999,-78.82792600000002,-78.829093,-78.829296,-78.829255,-78.83063900000001,-78.831917,-78.832104,-78.836241,-78.837037],"lat":[42.958384,42.95601700000001,42.954508,42.95514800000001,42.955409,42.95436299999999,42.954325,42.950121,42.947872,42.94752,42.94718400000001,42.947545,42.947549,42.94724,42.947362,42.94724999999999,42.94727400000001,42.946381,42.945072,42.944118,42.942843,42.942721,42.94035,42.940355,42.93995,42.939518,42.939649,42.936989,42.93413300000001,42.93207,42.929571,42.92884600000001,42.928123,42.925948,42.92429,42.923534,42.922299,42.922272,42.922217,42.922181,42.925353,42.926003,42.927187,42.928031,42.92855399999999,42.928188,42.927323,42.927655,42.92764400000001,42.925565,42.924661,42.923655,42.921945,42.921941,42.921935,42.92188000000001,42.921115,42.921088,42.921857,42.922235,42.92234500000001,42.923074,42.92315300000001,42.92631,42.92747099999999,42.92905399999999,42.928896,42.929599,42.929741,42.929889,42.93093,42.93167800000001,42.931497,42.93275100000001,42.932755,42.934429,42.936439,42.936382,42.937159,42.937172,42.938677,42.938653,42.940124,42.940107,42.940087,42.940611,42.94498600000001,42.945466,42.945263,42.94664399999999,42.947615,42.948428,42.949208,42.949791,42.949581,42.950185,42.952185,42.952261,42.959457,42.959443,42.95943159124396,42.957406,42.95802700000001,42.95809,42.958124,42.95812599999999,42.958144,42.95814510527432,42.958154,42.95774,42.95775,42.958162,42.958172,42.95820000000001,42.958224,42.958228,42.957697,42.957521,42.958285,42.95828900000001,42.95836700000001,42.958384]}]],[[{"lng":[-78.799256,-78.79919700000001,-78.804191,-78.80519100000001,-78.80571,-78.811609,-78.813866,-78.81811399999999,-78.82274200000001,-78.82550000000002,-78.827907,-78.82886499999999,-78.82888,-78.82890399999999,-78.82994600000001,-78.82993399999999,-78.834509,-78.836619,-78.83662,-78.83865900000001,-78.838652,-78.839292,-78.84004899999999,-78.84119000000001,-78.84236199999999,-78.84580800000001,-78.84706,-78.85193400000001,-78.853486,-78.85338299999999,-78.85396799999999,-78.853967,-78.85339399999999,-78.849936,-78.846952,-78.84692,-78.844031,-78.843999,-78.842035,-78.840099,-78.837082,-78.835161,-78.83733700000001,-78.839236,-78.83577200000001,-78.83576100000001,-78.831382,-78.82558899999999,-78.822878,-78.81672399999999,-78.814083,-78.81407799999999,-78.80596799999999,-78.805762,-78.804793,-78.804796,-78.803481,-78.80230400000001,-78.79931500000001,-78.799269,-78.799256],"lat":[42.89906700000001,42.901341,42.901608,42.90106299999999,42.902187,42.901392,42.90108800000001,42.900518,42.899837,42.898654,42.89840000000001,42.899362,42.900915,42.903524,42.903535,42.900586,42.899142,42.89847900000001,42.89884,42.898366,42.897834,42.897632,42.897393,42.897025,42.896657,42.895572,42.895178,42.893654,42.893154,42.889913,42.889787,42.88936700000001,42.887817,42.887823,42.887837,42.887837,42.88784499999999,42.887845,42.88785,42.887863,42.88784200000001,42.887848,42.885778,42.885009,42.88496099999999,42.885035,42.88615,42.888613,42.890363,42.89303,42.894156,42.894398,42.897638,42.897727,42.897607,42.897488,42.897788,42.89558,42.895575,42.89876900000001,42.89906700000001]}]],[[{"lng":[-78.79825300000002,-78.796904,-78.797527,-78.79795300000001,-78.79825300000002],"lat":[42.846017,42.845522,42.845751,42.845907,42.846017]}],[{"lng":[-78.798269,-78.79667786845945,-78.796712,-78.796796,-78.796897,-78.79691800000001,-78.797061,-78.797219,-78.797505,-78.79776,-78.797911,-78.798225,-78.798269],"lat":[42.843305,42.84198891457714,42.842116,42.842302,42.842446,42.842477,42.84265700000001,42.842777,42.84295,42.843086,42.843152,42.843291,42.843305]}],[{"lng":[-78.79524732942721,-78.795157,-78.795224,-78.79524732942721],"lat":[42.84116039022344,42.841135,42.841155,42.84116039022344]}],[{"lng":[-78.80007999999999,-78.800161,-78.800087,-78.800082,-78.80007999999999],"lat":[42.864844,42.86152,42.863752,42.864425,42.864844]}]],[[{"lng":[-78.808942,-78.813869,-78.81375900000002,-78.816199,-78.81840099999999,-78.818549,-78.821051,-78.82167200000001,-78.821668,-78.82166100000001,-78.821652,-78.821647,-78.823999,-78.823992,-78.825123,-78.82490799999999,-78.826404,-78.828121,-78.828164,-78.829926,-78.829939,-78.828199,-78.828217,-78.831058,-78.831057,-78.83052000000001,-78.830269,-78.83087,-78.829166,-78.829162,-78.829155,-78.829154,-78.831369,-78.83419000000001,-78.834204,-78.83762299999999,-78.83932900000001,-78.839356,-78.834138,-78.834126,-78.833628,-78.833623,-78.832657,-78.831659,-78.83163500000001,-78.830421,-78.83054300000001,-78.83245100000001,-78.82942,-78.829089,-78.8265,-78.82640000000001,-78.824412,-78.824286,-78.821523,-78.819317,-78.819329,-78.818383,-78.81469199999999,-78.813929,-78.81492299999999,-78.813688,-78.81368999999999,-78.813479,-78.812984,-78.81056,-78.808725,-78.808722,-78.807818,-78.807778,-78.805904,-78.80397000000001,-78.80339600000001,-78.79962999999999,-78.79915800000002,-78.799147,-78.799289,-78.799435,-78.799483,-78.799547,-78.79896100000001,-78.798982,-78.798979,-78.79898,-78.79899,-78.79899103308408,-78.79899899999999,-78.79900000000001,-78.79900000000001,-78.799008,-78.799007,-78.799012,-78.79902,-78.799021,-78.799024,-78.799025,-78.799025,-78.799082,-78.79882000000001,-78.798824,-78.798562,-78.79855499999999,-78.79854400000001,-78.79850500000001,-78.79845400000001,-78.798455,-78.798378,-78.79825500000001,-78.803409,-78.811493,-78.810356,-78.808757,-78.80865900000001,-78.804678,-78.80388100000002,-78.80388000000001,-78.803878,-78.80387500000001,-78.807683,-78.807734,-78.80883,-78.808942],"lat":[42.96141599999999,42.959457,42.952261,42.952185,42.950185,42.949581,42.949791,42.949208,42.948428,42.947615,42.94664399999999,42.945263,42.945466,42.94498600000001,42.940611,42.940087,42.940107,42.940124,42.938653,42.938677,42.937172,42.937159,42.936382,42.936439,42.934429,42.932755,42.93275100000001,42.931497,42.93167800000001,42.93093,42.929889,42.929741,42.929599,42.928896,42.92905399999999,42.92747099999999,42.92631,42.92315300000001,42.923074,42.92234500000001,42.92213499999999,42.921791,42.921872,42.921483,42.91893000000001,42.918907,42.917294,42.9168,42.914514,42.914509,42.914482,42.91448,42.914474,42.91447700000001,42.914559,42.915048,42.917044,42.917027,42.91696,42.917145,42.918887,42.918886,42.918638,42.918639,42.918238,42.918635,42.918628,42.919114,42.919102,42.919101,42.91908,42.91906600000001,42.91905,42.919007,42.92233599999999,42.922788,42.926543,42.927672,42.92891400000001,42.929542,42.92967000000001,42.929877,42.929908,42.929928,42.93140099999999,42.93176533842272,42.93309199999999,42.93317,42.933231,42.93509600000001,42.935463,42.935837,42.936524,42.936562,42.93706099999999,42.93734199999999,42.938064,42.938117,42.940938,42.94292100000001,42.944099,42.945056,42.94526299999999,42.946164,42.947258,42.94865800000001,42.94889899999999,42.949257,42.94938,42.949459,42.95215699999999,42.95226,42.954654,42.95458399999999,42.954556,42.95500700000001,42.955737,42.95641,42.95654300000001,42.957638,42.959028,42.96141599999999]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":1,"opacity":0.5,"fill":true,"fillColor":["#46327E","#FCE724","#24878E","#54C568","#277E8E","#F6E620","#26818E","#3DBC74","#2E6F8E","#29798E","#2A768E","#67CC5C","#2C738E","#440154","#463480","#7AD151","#FDE725","#3E4A89","#2D708E","#66CC5D","#1F978B","#443983","#A8DB34","#34608D"],"fillOpacity":0.7,"smoothFactor":1,"noClip":false},null,null,["ZIP: 14201Median Income: $34,204","ZIP: 14223Median Income: $83,528","ZIP: 14213Median Income: $52,597","ZIP: 14220Median Income: $68,337","ZIP: 14218Median Income: $50,484","ZIP: 14226Median Income: $83,023","ZIP: 14210Median Income: $51,059","ZIP: 14225Median Income: $65,562","ZIP: 14206Median Income: $46,842","ZIP: 14209Median Income: $49,359","ZIP: 14203Median Income: $48,529","ZIP: 14150Median Income: $70,294","ZIP: 14202Median Income: $47,990","ZIP: 14204Median Income: $26,000","ZIP: 14211Median Income: $34,490","ZIP: 14217Median Income: $72,205","ZIP: 14222Median Income: $83,692","ZIP: 14207Median Income: $38,951","ZIP: 14208Median Income: $46,940","ZIP: 14216Median Income: $70,260","ZIP: 14214Median Income: $56,573","ZIP: 14212Median Income: $35,517","ZIP: 14224Median Income: $76,250","ZIP: 14215Median Income: $43,326"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#440154 , #481B6D 6.93337031130833%, #3C508B 24.2667960895791%, #287C8E 41.60022186785%, #21A585 58.9336476461208%, #64CB5F 76.2670734243916%, #D4E21A 93.6004992026624%, #FDE725 "],"labels":["30,000","40,000","50,000","60,000","70,000","80,000"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"numeric","title":"Median Household Income","extra":{"p_1":0.06933370311308328,"p_n":0.9360049920266241},"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[42.826023,42.96645500000001],"lng":[-78.91245000000001,-78.795157]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>About this site</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-
-
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -579,6 +942,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 
