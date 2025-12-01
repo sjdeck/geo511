@@ -9,7 +9,7 @@ title: "Buffalo Median Income Dashboard"
 format: dashboard
 ---
 
-```{r setup}
+```{r setup, message=F, warning=F}
 library(tidycensus)
 library(tigris)
 library(sf)
