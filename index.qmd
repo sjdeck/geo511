@@ -47,7 +47,7 @@ summary of call frequency 6. Map most frequent call types by zipcode 7.
 Map call volume by zip code 8. Create and run a regression model on call
 frequency versus median income. 9. Plot regression.
 
-### 2.1 Data Sources
+## 2.1 Data Sources
 
 ```{r, message=F, warning=F}
 #| results: hide
@@ -119,7 +119,7 @@ census_data <- get_acs(
 
 ```
 
-### 2.2 Preprocessing and Data Preparation
+## 2.2 Preprocessing and Data Preparation
 
 ##### Cleaning and Filtering 911 records
 
@@ -174,9 +174,9 @@ mental_health_data <- calls_sf %>%
   )
 ```
 
-### 2.3 Analytic Methods
+## 2.3 Analytic Methods
 
-#### 2.3.1 Call Type Analysis
+### 2.3.1 Call Type Analysis
 
 ##### Categorize call type, map dominate calls, frequency bar chart
 
@@ -247,7 +247,7 @@ call_type_map <- ggplot() +
   theme_minimal()
 ```
 
-#### 2.3.2 Call Frequency Analysis
+### 2.3.2 Call Frequency Analysis
 
 ##### Call volume per zip per 1,000 residents, heatmap/choropleth, identify high volume
 
@@ -339,7 +339,7 @@ normalize_map <- leaflet(zip_data) %>%
   addLegend(pal = pal, values = ~calls_per_1000, title = "Calls per 1,000 Residents")
 ```
 
-#### 2.3.3 Income vs Call Activity Analysis
+### 2.3.3 Income vs Call Activity Analysis
 
 ##### Regression model, map high call/low-income pattern
 
@@ -368,14 +368,13 @@ regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
 
 # 3. Results
 
-\[\~200 words\]
-
-Tables and figures (maps and other graphics) are carefully planned to
-convey the results of your analysis. Intense exploration and evidence of
-many trials and failures. The author looked at the data in many
-different ways before coming to the final presentation of the data.
-
-Show tables, plots, etc. and describe them.
+The first analysis in section 2.3.1 is on the call description frequency
+and what call types are common where. The bar graph that was created
+shows Domestic Trouble to be the highest frequency, with Check Welfare
+next. When plotted on a map, Domestic Trouble is a top call description
+for a majority of the Buffalo zip codes with high residential volume.
+Areas with low residential volume are higher in other description
+categories such as Assist Citizen or Trespassing.
 
 ```{r, fig.width=6, fig.height=3, fig.cap="Map of completely random data"}
 
