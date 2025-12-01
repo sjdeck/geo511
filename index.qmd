@@ -236,15 +236,31 @@ is not normalized. The map is then saved to a variable for later
 analysis.
 
 ```{r, message=F, warning=F}
+# Color palette 
+pal <- colorFactor("viridis", domain = top_calls_zip$description)
 
-call_type_map <- ggplot() +
-  geom_sf(data = top_calls_zip, aes(fill = description), color = "black") +
-  scale_fill_viridis_d(option = "C") +
-  labs(
-    title = "Most Frequent Mental Health 911 Calls by ZIP Code (Mar–Apr 2024)",
-    caption = "City of Buffalo | Data: Erie County 911"
-  ) +
-  theme_minimal()
+# Leaflet map of Top calls by description
+call_type_map <- leaflet(top_calls_zip) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(
+    fillColor = ~pal(description),
+    color = "black",
+    weight = 1,
+    fillOpacity = 0.8,
+    label = ~paste0("ZIP: ", zcta5ce10,
+                    "<br>Description: ", description,
+                    "<br>Count: ", n),
+    labelOptions = labelOptions(
+      style = list("font-size" = "12px"),
+      direction = "auto"
+    )
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = ~description,
+    title = "Most Frequent Call Type",
+    opacity = 1
+  )
 ```
 
 ### 2.3.2 Call Frequency Analysis
@@ -352,7 +368,6 @@ will be visualized and saved in a variable.
 
 # Run simple regression model
 model <- lm(Frequency ~ median_income, data = zip_data)
-tidy(model)
 
 # Visualize
 regression_plot <- ggplot(zip_data, aes(x = median_income, y = Frequency)) +
@@ -376,28 +391,42 @@ for a majority of the Buffalo zip codes with high residential volume.
 Areas with low residential volume are higher in other description
 categories such as Assist Citizen or Trespassing.
 
-```{r, fig.width=6, fig.height=3, fig.cap="Map of completely random data"}
-
+```{r, fig.width=6, fig.height=3}
 ggplotly(descr_freq_bar)
+```
 
+```{r, fig.width=3, fig.height=5}
 call_type_map
+```
 
+The second analysis in section 2.3.2 highlights the areas that have a
+higher call frequency in each zipcode per 1000 residents. However, this
+map is misleading. This is because the zipcodes with higher call volumes
+have a much lower residency rate, due to its location being primarily
+business fronts. This can be shown specifically with zipcode 14203 that
+has 160.73 calls per 1000 people but only 2.526 residents, where as the
+14215 zipcode has 39.52 calls per 1000 residents with 42,813 residents
+total. The bar graph created for this map shows the call frequency
+without normalization, indicating the high volume of calls in general.
+
+```{r, fig.width=6, fig.height=3}
 ggplotly(zipcode_freq_bar)
+```
 
+```{r, fig.width=6, fig.height=5}
 normalize_map
-
-regression_plot
-
 ```
 
-```{r}
+With better understanding of the call distribution across Buffalo, how are these call volumes impacted by other socio-economic factors? By using a simple regression model, a better understanding of the relationship between median household income and the frequency of calls can be developed to understand how shared stressors of a community can impact mental well-being. 
 
+```{r}
+tidy(model)
 ```
 
-### Dygraphs Example
+With the above table, it is determined that for every $1,000 increase in median income, call volume will decrease by roughly 12 calls. This can be visualized through the graph created earlier. 
 
-```{r}
-
+```{r, fig.width=8, fig.height=3}
+ggplotly(regression_plot)
 ```
 
 # 4. Conclusions
