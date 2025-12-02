@@ -10,6 +10,7 @@ format: dashboard
 ---
 
 ```{r setup, message=F, warning=F}
+#| results: hide
 library(tidycensus)
 library(tigris)
 library(sf)
