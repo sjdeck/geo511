@@ -52,7 +52,7 @@ pal <- colorNumeric("viridis", domain = buffalo_income$estimate)
 
 
 ```{r setup, message=F, warning=F}
-leaflet(buffalo_income) |>
+buffalo_income <- leaflet(buffalo_income) |>
 addProviderTiles(providers$CartoDB.Positron) |>
 addPolygons(
 fillColor = ~pal(estimate),
