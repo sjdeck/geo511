@@ -93,8 +93,14 @@ previously installed.
 #| results: hide
 #| 
 # Import 911 data CSV from github data folder
-data_911_url <- "https://raw.githubusercontent.com/sjdeck/geo511/refs/heads/master/data/mar2apr2024_latlong.csv"
-data_911 <- read_csv(data_911_url)
+data1_911_url <- "https://raw.githubusercontent.com/sjdeck/geo511/refs/heads/master/data/c2024_data_all-1.csv"
+data1_911 <- read_csv(data1_911_url)
+
+# Import 911 data (second part) CSV from github data folder
+data2_911_url <- "https://raw.githubusercontent.com/sjdeck/geo511/refs/heads/master/data/c2024_data_all-2.csv"
+data2_911 <- read_csv(data2_911_url)
+
+data_911 <- bind_rows(data1_911, data2_911)
 
 # Import zipcode data from API 
 url_json <- "https://data.buffalony.gov/resource/qnyw-efar.geojson"
