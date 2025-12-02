@@ -48,7 +48,10 @@ buffalo_income <- buffalo_zips |>
 
 # Color palette for income
 pal <- colorNumeric("viridis", domain = buffalo_income$estimate)
+```
 
+
+```{r setup, message=F, warning=F}
 leaflet(buffalo_income) |>
 addProviderTiles(providers$CartoDB.Positron) |>
 addPolygons(
