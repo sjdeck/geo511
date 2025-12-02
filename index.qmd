@@ -109,7 +109,7 @@ zipcode_json <- st_read(url_json, quiet = TRUE)
 # Import Census data through API 
 
 # Set API key
-census_api_key("e12a911e4853b9b6ae9944d643816d70cd2b9b18", install = FALSE)
+census_api_key("d6bce03273517ee40d3077937c0680b32226e966", install = FALSE)
 readRenviron("~/.Renviron") 
 
 # Download census data
