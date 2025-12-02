@@ -429,7 +429,7 @@ With better understanding of the call distribution across Buffalo, how are these
 tidy(model)
 ```
 
-With the above table, it is determined that for every $1,000 increase in median income, call volume will decrease by roughly 12 calls. This can be visualized through the graph created earlier. 
+With the above table, it is determined that for every $1,000 increase in median income, call volume will decrease by roughly 78.8 calls. This can be visualized through the graph created earlier. 
 
 ```{r, fig.width=8, fig.height=3}
 ggplotly(regression_plot)
@@ -437,7 +437,7 @@ ggplotly(regression_plot)
 
 # 4. Conclusions
 
-From the analysis, it is shown that areas with lower income have higher call volumes for mental health related emergencies, showcasing a decrease of 12 calls for every additional $1,000 in median income. Section 2.3.1 highlighted the type of calls that have high call volumes for the City of Buffalo, with domestic based trouble and residential welfare checks with the most. Section 2.3.2 shows which zipcodes have these high call volumes, with a majority of the calls coming from residential neighborhoods. However, non-residential areas have the highest normalized call volume despite total call quantity being average if not below average. Section 2.3.3 studies the relationship between these calls and the zipcodes median income, which indicates areas with lower income experience a higher call volume for mental health related issues. After this analysis, future works could explore the relationship between these higher calls and other socio-economic factors or demographic factors that could contribute to these mental health issues. A spatial regression or temporal regression would also be beneficial, further deepening the understanding between where these calls take place and when. 
+From the analysis, it is shown that areas with lower income have higher call volumes for mental health related emergencies, showcasing a decrease of 78.8 calls for every additional $1,000 in median income. Section 2.3.1 highlighted the type of calls that have high call volumes for the City of Buffalo, with domestic based trouble and residential welfare checks with the most. Section 2.3.2 shows which zipcodes have these high call volumes, with a majority of the calls coming from residential neighborhoods. However, non-residential areas have the highest normalized call volume despite total call quantity being average if not below average. Section 2.3.3 studies the relationship between these calls and the zipcodes median income, which indicates areas with lower income experience a higher call volume for mental health related issues. After this analysis, future works could explore the relationship between these higher calls and other socio-economic factors or demographic factors that could contribute to these mental health issues. A spatial regression or temporal regression would also be beneficial, further deepening the understanding between where these calls take place and when. 
 
 
 # 5. References
