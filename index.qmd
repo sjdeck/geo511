@@ -144,7 +144,7 @@ calls_sf <- st_as_sf(data_911, coords = c("Longitude", "Latitude"), crs = 4326, 
 zipcode_json <- st_transform(zipcode_json, st_crs(calls_sf))
 
 # Join call data and zipcode data together 
-calls_sf <- st_intersection(calls_sf, zipcode_json %>% select(zcta5ce10))
+calls_sf1 <- st_intersection(calls_sf, zipcode_json %>% select(zcta5ce10))
 
 # Clean census data, change CRS and pivot wider
 census_clean <- census_data %>%
@@ -169,11 +169,11 @@ mental_health_desc <- c("LOUD NOISE", "NEIGHBOR TROUBLE","TRESPASSING","CUSTOMER
 "ASSIST CITIZEN","PERSON SOLICITING", "JUVENILE TROUBLE","PROPERTY DISPUTE","MOTORIST STRANDED","LANDLORD TROUBLE","SUICIDE ATTEMPT","PERSON DOWN","PERSON SCREAMING","JUVENILE FOUND","INDECENT EXPOSURE","LABOR DISPUTE","PROSTITUTION","GAMBLING" )
 
 # Create a new dataset with only mental health descriptors
-mental_health_data <- calls_sf %>%
+mental_health_data <- calls_sf1 %>%
   filter( DESCRIPTIO %in% mental_health_desc ) %>%
   rename(
     description = DESCRIPTIO,
-    date = DATEREPORT,
+    date = X.DATEREPORT,
     full_address = Buff_remov,
     street_name = STRNAME,
     zipcode = zcta5ce10
