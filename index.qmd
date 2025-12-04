@@ -25,15 +25,14 @@ community development.
 
 # 2. Materials and Methods
 
-Overview: Import, clean and categorize required data from March and
-April of 2024 into Mental Health categories. Plot call types and call
+Overview: Import, clean and categorize required data from 2024 into Mental Health categories. Plot call types and call
 volumes. Run a regression analysis on specified mental health call types
 and median income values.
 
 Data required for this analysis: - 911 call data provided by the City of
-Buffalo Police Department for the months of March and April in 2024.
+Buffalo Police Department for all of 2024.
 Data can be found at
-'https://figshare.com/articles/dataset/Buffalo_911_Call_March_and_April_2024/30585986?file=59454170' -
+'https://doi.org/10.6084/m9.figshare.30794246' -
 Census tract data from 'https://www.census.gov/data/' using an API key
 from 2023, the most recent and compatible dataset. Must include median
 income data and total populaton data. - Zipcode boundaries from
@@ -209,7 +208,7 @@ descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Fr
   geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
     title = "Frequency of Mental Health Calls in Buffalo, New York",
-    caption = "March to April of 2024",
+    caption = "Data from 2024",
     x = "Call Description",
     y = "Frequency"
   ) +
@@ -294,7 +293,7 @@ zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequ
   geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
     title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York",
-    caption = "March to April of 2024",
+    caption = "Data from 2024",
     x = "Zipcode",
     y = "Frequency"
   ) +
@@ -442,13 +441,15 @@ From the analysis, it is shown that areas with lower income have higher call vol
 
 # 5. References
 
-PPG Pilot Article - https://ppgbuffalo.org/news-and-events/news/article:11-08-2024-12-00am-spectrum-news-buffalo-group-looks-to-bring-emergency-responders-to-erie-county-for-nonviolent-911-calls/
+Spectrum News: “Buffalo Group looks to bring emergency responders to Erie County for nonviolent 911 calls” > News > News > Partnership for the Public Good (PPG) - Buffalo, NY. (n.d.). https://ppgbuffalo.org/news-and-events/news/article:11-08-2024-12-00am-spectrum-news-buffalo-group-looks-to-bring-emergency-responders-to-erie-county-for-nonviolent-911-calls/
 
-911 Call Data FOIL'd from the Buffalo Police Department - https://cityofbuffalony.nextrequest.com 
+Freedom of Information Requests (FOIL)NextRequest - modern FOIA & Public Records request software. (n.d.). https://cityofbuffalony.nextrequest.com/
 
-Census Data - https://www.census.gov/data/
+Deck, Sydney (2025). City of Buffalo 911 Call Data. figshare. Dataset. https://doi.org/10.6084/m9.figshare.30794246
 
-Zipcode Data - https://data.buffalony.gov/
+US Census Bureau. (2025, August 28). Data. Census.gov. https://www.census.gov/data/
+
+Open Data Portal | OpenData Buffalo. (n.d.). Tyler Data & Insights. https://data.buffalony.gov/
 
 Example Crime Map - https://www.arcgis.com/apps/mapviewer/index.html?layers=7405be0742a846ab94c4988ddfe6e581
 
