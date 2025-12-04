@@ -71,7 +71,3 @@ buffalo_map <-
     position = "bottomright"
   )
 ```
-
-```{r setup, message=F, warning=F}
-buffalo_map
-```
