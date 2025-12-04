@@ -48,25 +48,30 @@ buffalo_income <- buffalo_zips |>
 
 # Color palette for income
 pal <- colorNumeric("viridis", domain = buffalo_income$estimate)
+
+buffalo_map <- 
+  buffalo_income %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addPolygons(
+    fillColor = ~pal(estimate),
+    color = "black",
+    weight = 1,
+    fillOpacity = 0.7,
+    label = ~paste0(
+      "ZIP: ", GEOID20, "<br>",
+      "Median Income: $", formatC(estimate, format = "d", big.mark = ",")
+    ),
+    labelOptions = labelOptions(direction = "auto")
+  ) %>% 
+  addLegend(
+    pal = pal,
+    values = ~estimate,
+    title = "Median Household Income",
+    position = "bottomright"
+  )
 ```
 
-
 ```{r setup, message=F, warning=F}
-buffalo_income <- leaflet(buffalo_income) |>
-addProviderTiles(providers$CartoDB.Positron) |>
-addPolygons(
-fillColor = ~pal(estimate),
-color = "black",
-weight = 1,
-fillOpacity = 0.7,
-label = ~paste0("ZIP: ", GEOID20, "",
-"Median Income: $", formatC(estimate, format="d", big.mark=",")),
-labelOptions = labelOptions(direction = "auto")
-) |>
-addLegend(
-pal = pal,
-values = ~estimate,
-title = "Median Household Income",
-position = "bottomright"
-)
+buffalo_map
 ```
