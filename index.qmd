@@ -207,7 +207,7 @@ bar graph will be saved in a variable for analysis.
 descr_freq_bar <- ggplot(summary_table_desc, aes(x = factor(description), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
-    title = "Frequency of Mental Health Calls in Buffalo, New York",
+    title = "Frequency of Mental Health Calls in Buffalo, New York (2024)",
     caption = "Data from 2024",
     x = "Call Description",
     y = "Frequency"
@@ -292,7 +292,7 @@ bar graph will be saved in a variable for analysis.
 zipcode_freq_bar <- ggplot(summary_table_zip, aes(x = factor(zipcode), y = Frequency)) + 
   geom_bar(stat = "identity", fill = "steelblue") + 
   labs(
-    title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York",
+    title = "Frequency of Mental Health Calls per Zipcode in Buffalo, New York (2024)",
     caption = "Data from 2024",
     x = "Zipcode",
     y = "Frequency"
